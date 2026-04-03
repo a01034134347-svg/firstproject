@@ -100,30 +100,35 @@ async function predict() {
     try {
         const prediction = await model.predict(imagePreview);
         
-        // Find probabilities for each class
-        const dogPred = prediction.find(p => p.className === 'Dog');
-        const catPred = prediction.find(p => p.className === 'Cat');
+        // Find probabilities by index if names don't match or to be more robust
+        // Assuming first class is Dog/강아지상 and second is Cat/고양이상
+        const dogPred = prediction[0];
+        const catPred = prediction[1];
         
         const dogPercent = (dogPred.probability * 100).toFixed(2);
         const catPercent = (catPred.probability * 100).toFixed(2);
         
-        // Determine the top result for the description and emoji
+        // Determine the top result
         const topResult = [...prediction].sort((a, b) => b.probability - a.probability)[0];
+        const isDog = topResult.className.toLowerCase().includes('dog') || topResult === dogPred;
         
         let emoji = '';
         let description = '';
+        let resultTitle = '';
 
-        if (topResult.className === 'Dog') {
+        if (isDog) {
             emoji = '🐶';
-            description = 'Dogs are known for their loyalty and friendliness. They are social animals that enjoy human companionship and exercise.';
+            resultTitle = '강아지상';
+            description = '강아지상은 밝고 활기찬 인상을 줍니다. 친근하고 다정한 매력이 있으며 상대방에게 신뢰감을 주는 성격이 많습니다.';
         } else {
             emoji = '🐱';
-            description = 'Cats are independent, agile, and curious creatures. They are known for their grooming habits and affectionate yet subtle behavior.';
+            resultTitle = '고양이상';
+            description = '고양이상은 도도하고 세련된 인상을 줍니다. 신비롭고 매력적인 분위기가 있으며 관찰력이 뛰어나고 지적인 면모가 돋보입니다.';
         }
         
         resultContainer.innerHTML = `
             <div style="margin-bottom: 1rem;">
-                <div style="font-size: 1.4rem; margin-bottom: 0.5rem;">결과: ${topResult.className === 'Dog' ? '강아지상' : '고양이상'} ${emoji}</div>
+                <div style="font-size: 1.4rem; margin-bottom: 0.5rem;">결과: ${resultTitle} ${emoji}</div>
                 <div style="display: flex; justify-content: space-around; font-size: 1rem; margin-bottom: 1rem; background: rgba(0,0,0,0.05); padding: 10px; border-radius: 8px;">
                     <span>🐶 강아지상: ${dogPercent}%</span>
                     <span>🐱 고양이상: ${catPercent}%</span>
@@ -134,7 +139,7 @@ async function predict() {
         resetBtn.style.display = 'block';
     } catch (e) {
         console.error("Prediction failed:", e);
-        resultContainer.textContent = "Error during analysis. Please try a different image.";
+        resultContainer.textContent = "분석 중 오류가 발생했습니다. 다른 이미지를 시도해 주세요.";
         resetBtn.style.display = 'block';
     }
 }
