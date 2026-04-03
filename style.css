@@ -1,31 +1,81 @@
+:root {
+    --bg-color: #f0f0f0;
+    --container-bg: white;
+    --text-color: #333;
+    --ball-bg: #4CAF50;
+    --btn-bg: #008CBA;
+    --btn-hover: #005f7a;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+body.dark {
+    --bg-color: #1a1a1a;
+    --container-bg: #2d2d2d;
+    --text-color: #f0f0f0;
+    --ball-bg: #45a049;
+    --btn-bg: #0077a3;
+    --btn-hover: #005f7a;
+    --shadow: rgba(0, 0, 0, 0.5);
+}
+
 body {
     font-family: sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f0f0f0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     margin: 0;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
     text-align: center;
-    background-color: white;
+    background-color: var(--container-bg);
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px var(--shadow);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    position: relative;
+    max-width: 500px;
+    width: 90%;
+    margin: 2rem;
+}
+
+.theme-toggle-container {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+#theme-toggle {
+    background: none;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.3s;
+}
+
+#theme-toggle:hover {
+    background-color: var(--text-color);
+    color: var(--container-bg);
 }
 
 h1 {
     margin-bottom: 2rem;
-    color: #333;
+    color: var(--text-color);
 }
 
 .lotto-numbers {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: 0.5rem;
     margin-bottom: 2rem;
+    flex-wrap: wrap;
 }
 
 .lotto-ball {
@@ -38,7 +88,7 @@ h1 {
     font-size: 1.5rem;
     font-weight: bold;
     color: white;
-    background-color: #4CAF50;
+    background-color: var(--ball-bg);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -47,14 +97,69 @@ h1 {
     font-size: 1.2rem;
     border: none;
     border-radius: 5px;
-    background-color: #008CBA;
+    background-color: var(--btn-bg);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+#generator-btn:hover {
+    background-color: var(--btn-hover);
+}
+
+.separator {
+    margin: 2rem 0;
+    border: none;
+    border-top: 1px solid var(--text-color);
+    opacity: 0.2;
+}
+
+.inquiry-form {
+    text-align: left;
+}
+
+.inquiry-form h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--text-color);
+    border-radius: 5px;
+    background-color: var(--container-bg);
+    color: var(--text-color);
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+#submit-btn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
-#generator-btn:hover {
-    background-color: #005f7a;
+#submit-btn:hover {
+    background-color: #218838;
 }
 
 @media (max-width: 480px) {
