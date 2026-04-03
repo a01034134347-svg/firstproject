@@ -78,10 +78,16 @@ function handleFiles(files) {
 
 async function predict() {
     const prediction = await model.predict(imagePreview);
-    prediction.sort((a, b) => b.probability - a.probability);
     
-    const topResult = prediction[0];
-    const percentage = (topResult.probability * 100).toFixed(2);
+    // Find probabilities for each class
+    const dogPred = prediction.find(p => p.className === 'Dog');
+    const catPred = prediction.find(p => p.className === 'Cat');
+    
+    const dogPercent = (dogPred.probability * 100).toFixed(2);
+    const catPercent = (catPred.probability * 100).toFixed(2);
+    
+    // Determine the top result for the description and emoji
+    const topResult = prediction.sort((a, b) => b.probability - a.probability)[0];
     
     let emoji = '';
     let description = '';
@@ -95,7 +101,13 @@ async function predict() {
     }
     
     resultContainer.innerHTML = `
-        <div style="margin-bottom: 0.5rem;">Result: ${topResult.className} ${emoji} (${percentage}%)</div>
+        <div style="margin-bottom: 1rem;">
+            <div style="font-size: 1.4rem; margin-bottom: 0.5rem;">Result: ${topResult.className} ${emoji}</div>
+            <div style="display: flex; justify-content: space-around; font-size: 1rem; margin-bottom: 1rem; background: rgba(0,0,0,0.05); padding: 10px; border-radius: 8px;">
+                <span>🐶 Dog: ${dogPercent}%</span>
+                <span>🐱 Cat: ${catPercent}%</span>
+            </div>
+        </div>
         <p style="font-size: 0.9rem; font-weight: normal; color: var(--text-color); opacity: 0.8; line-height: 1.4;">${description}</p>
     `;
     resetBtn.style.display = 'block';
