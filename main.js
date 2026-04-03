@@ -83,7 +83,20 @@ async function predict() {
     const topResult = prediction[0];
     const percentage = (topResult.probability * 100).toFixed(2);
     
-    let emoji = topResult.className === 'Dog' ? '🐶' : '🐱';
-    resultContainer.innerHTML = `Result: ${topResult.className} ${emoji} (${percentage}%)`;
+    let emoji = '';
+    let description = '';
+
+    if (topResult.className === 'Dog') {
+        emoji = '🐶';
+        description = 'Dogs are known for their loyalty and friendliness. They are social animals that enjoy human companionship and exercise.';
+    } else {
+        emoji = '🐱';
+        description = 'Cats are independent, agile, and curious creatures. They are known for their grooming habits and affectionate yet subtle behavior.';
+    }
+    
+    resultContainer.innerHTML = `
+        <div style="margin-bottom: 0.5rem;">Result: ${topResult.className} ${emoji} (${percentage}%)</div>
+        <p style="font-size: 0.9rem; font-weight: normal; color: var(--text-color); opacity: 0.8; line-height: 1.4;">${description}</p>
+    `;
     resetBtn.style.display = 'block';
 }
