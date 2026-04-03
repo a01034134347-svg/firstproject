@@ -13,14 +13,25 @@ themeToggle.addEventListener('click', () => {
 
 // Teachable Machine logic
 const URL = "https://teachablemachine.withgoogle.com/models/WbTY28uhe/";
-let model, labelContainer, maxPredictions;
+let model, maxPredictions;
+let isModelLoading = true;
 
 async function init() {
-    const modelURL = URL + "model.json";
-    const metadataURL = URL + "metadata.json";
-    model = await tmImage.load(modelURL, metadataURL);
-    maxPredictions = model.getTotalClasses();
+    try {
+        const modelURL = URL + "model.json";
+        const metadataURL = URL + "metadata.json";
+        model = await tmImage.load(modelURL, metadataURL);
+        maxPredictions = model.getTotalClasses();
+        isModelLoading = false;
+        console.log("Model loaded successfully");
+    } catch (e) {
+        console.error("Failed to load model:", e);
+        resultContainer.textContent = "Error: Failed to load AI model. Please refresh.";
+    }
 }
+
+// Start loading the model immediately
+init();
 
 const imageUpload = document.getElementById('image-upload');
 const uploadBtn = document.getElementById('upload-btn');
@@ -64,51 +75,66 @@ function handleFiles(files) {
     if (!file) return;
 
     const reader = new FileReader();
-    reader.onload = async (event) => {
+    reader.onload = (event) => {
         imagePreview.src = event.target.result;
         imagePreview.style.display = 'block';
         uploadArea.style.display = 'none';
-        resultContainer.textContent = 'Analyzing...';
         
-        if (!model) await init();
-        predict();
+        // Wait for image to load before predicting
+        imagePreview.onload = async () => {
+            if (isModelLoading) {
+                resultContainer.textContent = 'AI Model is still loading, please wait...';
+                // Wait for model to load if it hasn't yet
+                while (isModelLoading) {
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                }
+            }
+            resultContainer.textContent = 'Analyzing...';
+            predict();
+        };
     };
     reader.readAsDataURL(file);
 }
 
 async function predict() {
-    const prediction = await model.predict(imagePreview);
-    
-    // Find probabilities for each class
-    const dogPred = prediction.find(p => p.className === 'Dog');
-    const catPred = prediction.find(p => p.className === 'Cat');
-    
-    const dogPercent = (dogPred.probability * 100).toFixed(2);
-    const catPercent = (catPred.probability * 100).toFixed(2);
-    
-    // Determine the top result for the description and emoji
-    const topResult = prediction.sort((a, b) => b.probability - a.probability)[0];
-    
-    let emoji = '';
-    let description = '';
+    try {
+        const prediction = await model.predict(imagePreview);
+        
+        // Find probabilities for each class
+        const dogPred = prediction.find(p => p.className === 'Dog');
+        const catPred = prediction.find(p => p.className === 'Cat');
+        
+        const dogPercent = (dogPred.probability * 100).toFixed(2);
+        const catPercent = (catPred.probability * 100).toFixed(2);
+        
+        // Determine the top result for the description and emoji
+        const topResult = [...prediction].sort((a, b) => b.probability - a.probability)[0];
+        
+        let emoji = '';
+        let description = '';
 
-    if (topResult.className === 'Dog') {
-        emoji = '🐶';
-        description = 'Dogs are known for their loyalty and friendliness. They are social animals that enjoy human companionship and exercise.';
-    } else {
-        emoji = '🐱';
-        description = 'Cats are independent, agile, and curious creatures. They are known for their grooming habits and affectionate yet subtle behavior.';
-    }
-    
-    resultContainer.innerHTML = `
-        <div style="margin-bottom: 1rem;">
-            <div style="font-size: 1.4rem; margin-bottom: 0.5rem;">결과: ${topResult.className === 'Dog' ? '강아지상' : '고양이상'} ${emoji}</div>
-            <div style="display: flex; justify-content: space-around; font-size: 1rem; margin-bottom: 1rem; background: rgba(0,0,0,0.05); padding: 10px; border-radius: 8px;">
-                <span>🐶 강아지상: ${dogPercent}%</span>
-                <span>🐱 고양이상: ${catPercent}%</span>
+        if (topResult.className === 'Dog') {
+            emoji = '🐶';
+            description = 'Dogs are known for their loyalty and friendliness. They are social animals that enjoy human companionship and exercise.';
+        } else {
+            emoji = '🐱';
+            description = 'Cats are independent, agile, and curious creatures. They are known for their grooming habits and affectionate yet subtle behavior.';
+        }
+        
+        resultContainer.innerHTML = `
+            <div style="margin-bottom: 1rem;">
+                <div style="font-size: 1.4rem; margin-bottom: 0.5rem;">결과: ${topResult.className === 'Dog' ? '강아지상' : '고양이상'} ${emoji}</div>
+                <div style="display: flex; justify-content: space-around; font-size: 1rem; margin-bottom: 1rem; background: rgba(0,0,0,0.05); padding: 10px; border-radius: 8px;">
+                    <span>🐶 강아지상: ${dogPercent}%</span>
+                    <span>🐱 고양이상: ${catPercent}%</span>
+                </div>
             </div>
-        </div>
-        <p style="font-size: 0.9rem; font-weight: normal; color: var(--text-color); opacity: 0.8; line-height: 1.4;">${description}</p>
-    `;
-    resetBtn.style.display = 'block';
+            <p style="font-size: 0.9rem; font-weight: normal; color: var(--text-color); opacity: 0.8; line-height: 1.4;">${description}</p>
+        `;
+        resetBtn.style.display = 'block';
+    } catch (e) {
+        console.error("Prediction failed:", e);
+        resultContainer.textContent = "Error during analysis. Please try a different image.";
+        resetBtn.style.display = 'block';
+    }
 }
