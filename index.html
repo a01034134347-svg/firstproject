@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animal Face Test</title>
+    <title>Animal Face Test - Dog or Cat? Find Your Animal Type</title>
+    <meta name="description" content="Discover if you have a Dog Face or a Cat Face with our AI-powered Animal Face Test. Learn about your personality and characteristics.">
+    <meta name="keywords" content="Animal Face Test, Dog Face, Cat Face, AI Face Analysis, Face Type Test">
     <meta name="google-adsense-account" content="ca-pub-8469659589717489">
     <link rel="stylesheet" href="style.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8469659589717489" crossorigin="anonymous"></script>
@@ -11,13 +13,22 @@
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="theme-toggle-container">
-            <button id="theme-toggle">Dark Mode</button>
-        </div>
-        
-        <section class="animal-test-section">
+    <header class="main-header">
+        <div class="logo">🐾 AnimalFaceTest</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#test-section">Test</a></li>
+                <li><a href="#info-section">Info</a></li>
+                <li><a href="#about-section">About</a></li>
+            </ul>
+        </nav>
+        <button id="theme-toggle">Dark Mode</button>
+    </header>
+
+    <main class="container">
+        <section id="test-section" class="animal-test-section">
             <h1>Animal Face Test (Dog vs Cat)</h1>
+            <p class="subtitle">Upload your photo and let our AI determine your animal face type!</p>
             <div class="upload-area">
                 <input type="file" id="image-upload" accept="image/*" hidden>
                 <div class="upload-icon">📁</div>
@@ -33,8 +44,37 @@
 
         <hr class="separator">
 
+        <section id="info-section" class="info-section">
+            <article class="info-card">
+                <h2>What is the Animal Face Test?</h2>
+                <p>The Animal Face Test is a popular personality and facial analysis trend that categorizes human facial features into different animal types. The most common types are <strong>Dog Face</strong> and <strong>Cat Face</strong>.</p>
+            </article>
+
+            <article class="info-card">
+                <h3>🐶 The Dog Face Type</h3>
+                <p>People with a dog face type typically have rounder facial features, big eyes, and a soft, friendly expression. They are often perceived as loyal, energetic, and approachable. This face type is associated with a warm and trustworthy personality.</p>
+            </article>
+
+            <article class="info-card">
+                <h3>🐱 The Cat Face Type</h3>
+                <p>The cat face type is characterized by sharp, upward-slanting eyes, a prominent jawline, and a more chic or mysterious aura. People with this type are often seen as independent, intelligent, and charismatic.</p>
+            </article>
+
+            <article class="info-card">
+                <h3>How It Works</h3>
+                <p>Our tool uses <strong>TensorFlow.js</strong> and <strong>Teachable Machine</strong> AI models trained on thousands of images to identify patterns and features associated with these animal types. All analysis happens right in your browser, ensuring your data remains private.</p>
+            </article>
+        </section>
+
+        <hr class="separator">
+
+        <section id="about-section" class="about-section">
+            <h2>About This Project</h2>
+            <p>AnimalFaceTest was created to provide a fun and interactive way to explore AI technology. We believe in transparency and user privacy. No photos are uploaded to any server; everything is processed locally on your device.</p>
+        </section>
+
         <div class="inquiry-form">
-            <h2>Partnership Inquiry</h2>
+            <h2>Contact Us / Partnership</h2>
             <form action="https://formspree.io/f/xpqoywoq" method="POST">
                 <div class="form-group">
                     <input type="text" name="name" placeholder="Your Name" required>
@@ -52,16 +92,40 @@
         <hr class="separator">
 
         <div id="disqus_thread"></div>
-        <script>
-            (function() {
-            var d = document, s = d.createElement('script');
-            s.src = 'https://firstproject-1.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2026 AnimalFaceTest. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#about-section">About</a>
+            <a href="#" onclick="showPrivacyPolicy(); return false;">Privacy Policy</a>
+            <a href="mailto:admin@example.com">Contact</a>
+        </div>
+    </footer>
+
+    <!-- Simple Privacy Policy Modal -->
+    <div id="privacy-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="hidePrivacyPolicy()">&times;</span>
+            <h2>Privacy Policy</h2>
+            <p><strong>Effective Date:</strong> April 3, 2026</p>
+            <p>We take your privacy seriously. Here is how we handle your information:</p>
+            <ul>
+                <li><strong>Photos:</strong> Your uploaded photos are processed locally in your browser using AI. We NEVER upload your photos to our servers.</li>
+                <li><strong>Cookies & Ads:</strong> We use Google AdSense to serve ads. Google may use cookies to serve ads based on your prior visits to this or other websites.</li>
+                <li><strong>Third-Party Services:</strong> We use Disqus for comments and Formspree for contact inquiries.</li>
+            </ul>
+        </div>
     </div>
+
+    <script>
+        function showPrivacyPolicy() {
+            document.getElementById('privacy-modal').style.display = 'block';
+        }
+        function hidePrivacyPolicy() {
+            document.getElementById('privacy-modal').style.display = 'none';
+        }
+    </script>
     <script src="main.js"></script>
 </body>
 </html>
