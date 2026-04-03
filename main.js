@@ -102,10 +102,10 @@ async function predict() {
     
     resultContainer.innerHTML = `
         <div style="margin-bottom: 1rem;">
-            <div style="font-size: 1.4rem; margin-bottom: 0.5rem;">Result: ${topResult.className} ${emoji}</div>
+            <div style="font-size: 1.4rem; margin-bottom: 0.5rem;">결과: ${topResult.className === 'Dog' ? '강아지상' : '고양이상'} ${emoji}</div>
             <div style="display: flex; justify-content: space-around; font-size: 1rem; margin-bottom: 1rem; background: rgba(0,0,0,0.05); padding: 10px; border-radius: 8px;">
-                <span>🐶 Dog: ${dogPercent}%</span>
-                <span>🐱 Cat: ${catPercent}%</span>
+                <span>🐶 강아지상: ${dogPercent}%</span>
+                <span>🐱 고양이상: ${catPercent}%</span>
             </div>
         </div>
         <p style="font-size: 0.9rem; font-weight: normal; color: var(--text-color); opacity: 0.8; line-height: 1.4;">${description}</p>
