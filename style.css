@@ -205,6 +205,8 @@ h1 {
 
 #image-preview {
     box-shadow: 0 4px 8px var(--shadow);
+    display: block;
+    margin: 1rem auto;
 }
 
 #result-container {
