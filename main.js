@@ -101,7 +101,7 @@ async function predict() {
         const prediction = await model.predict(imagePreview);
         
         // Find probabilities by index if names don't match or to be more robust
-        // Assuming first class is Dog/강아지상 and second is Cat/고양이상
+        // Assuming first class is Dog and second is Cat
         const dogPred = prediction[0];
         const catPred = prediction[1];
         
@@ -118,20 +118,20 @@ async function predict() {
 
         if (isDog) {
             emoji = '🐶';
-            resultTitle = '강아지상';
-            description = '강아지상은 밝고 활기찬 인상을 줍니다. 친근하고 다정한 매력이 있으며 상대방에게 신뢰감을 주는 성격이 많습니다.';
+            resultTitle = 'Dog Face';
+            description = 'Dog faces give a bright and energetic impression. They have a friendly and kind charm and often have a personality that gives trust to others.';
         } else {
             emoji = '🐱';
-            resultTitle = '고양이상';
-            description = '고양이상은 도도하고 세련된 인상을 줍니다. 신비롭고 매력적인 분위기가 있으며 관찰력이 뛰어나고 지적인 면모가 돋보입니다.';
+            resultTitle = 'Cat Face';
+            description = 'Cat faces give a chic and sophisticated impression. They have a mysterious and attractive atmosphere and stand out for their excellent observation and intellectual side.';
         }
         
         resultContainer.innerHTML = `
             <div style="margin-bottom: 1rem;">
-                <div style="font-size: 1.4rem; margin-bottom: 0.5rem;">결과: ${resultTitle} ${emoji}</div>
+                <div style="font-size: 1.4rem; margin-bottom: 0.5rem;">Result: ${resultTitle} ${emoji}</div>
                 <div style="display: flex; justify-content: space-around; font-size: 1rem; margin-bottom: 1rem; background: rgba(0,0,0,0.05); padding: 10px; border-radius: 8px;">
-                    <span>🐶 강아지상: ${dogPercent}%</span>
-                    <span>🐱 고양이상: ${catPercent}%</span>
+                    <span>🐶 Dog Face: ${dogPercent}%</span>
+                    <span>🐱 Cat Face: ${catPercent}%</span>
                 </div>
             </div>
             <p style="font-size: 0.9rem; font-weight: normal; color: var(--text-color); opacity: 0.8; line-height: 1.4;">${description}</p>
@@ -139,7 +139,7 @@ async function predict() {
         resetBtn.style.display = 'block';
     } catch (e) {
         console.error("Prediction failed:", e);
-        resultContainer.textContent = "분석 중 오류가 발생했습니다. 다른 이미지를 시도해 주세요.";
+        resultContainer.textContent = "An error occurred during analysis. Please try a different image.";
         resetBtn.style.display = 'block';
     }
 }
