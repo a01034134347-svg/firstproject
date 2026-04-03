@@ -1,32 +1,5 @@
-const lottoNumbersDiv = document.querySelector('.lotto-numbers');
-const generatorBtn = document.getElementById('generator-btn');
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
-
-// Lotto logic
-function generateLottoNumbers() {
-    const numbers = [];
-    while (numbers.length < 6) {
-        const rand = Math.floor(Math.random() * 45) + 1;
-        if (!numbers.includes(rand)) {
-            numbers.push(rand);
-        }
-    }
-    numbers.sort((a, b) => a - b);
-    displayNumbers(numbers);
-}
-
-function displayNumbers(numbers) {
-    lottoNumbersDiv.innerHTML = '';
-    numbers.forEach(num => {
-        const ball = document.createElement('div');
-        ball.classList.add('lotto-ball');
-        ball.textContent = num;
-        lottoNumbersDiv.appendChild(ball);
-    });
-}
-
-generatorBtn.addEventListener('click', generateLottoNumbers);
 
 // Theme toggle logic
 themeToggle.addEventListener('click', () => {
@@ -53,11 +26,31 @@ const imageUpload = document.getElementById('image-upload');
 const uploadBtn = document.getElementById('upload-btn');
 const imagePreview = document.getElementById('image-preview');
 const resultContainer = document.getElementById('result-container');
+const uploadArea = document.querySelector('.upload-area');
 
 uploadBtn.addEventListener('click', () => imageUpload.click());
 
-imageUpload.addEventListener('change', async (e) => {
-    const file = e.target.files[0];
+imageUpload.addEventListener('change', (e) => {
+    handleFiles(e.target.files);
+});
+
+uploadArea.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    uploadArea.classList.add('dragover');
+});
+
+uploadArea.addEventListener('dragleave', () => {
+    uploadArea.classList.remove('dragover');
+});
+
+uploadArea.addEventListener('drop', (e) => {
+    e.preventDefault();
+    uploadArea.classList.remove('dragover');
+    handleFiles(e.dataTransfer.files);
+});
+
+function handleFiles(files) {
+    const file = files[0];
     if (!file) return;
 
     const reader = new FileReader();
@@ -70,7 +63,7 @@ imageUpload.addEventListener('change', async (e) => {
         predict();
     };
     reader.readAsDataURL(file);
-});
+}
 
 async function predict() {
     const prediction = await model.predict(imagePreview);
