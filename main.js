@@ -27,8 +27,18 @@ const uploadBtn = document.getElementById('upload-btn');
 const imagePreview = document.getElementById('image-preview');
 const resultContainer = document.getElementById('result-container');
 const uploadArea = document.querySelector('.upload-area');
+const resetBtn = document.getElementById('reset-btn');
 
 uploadBtn.addEventListener('click', () => imageUpload.click());
+
+resetBtn.addEventListener('click', () => {
+    imagePreview.style.display = 'none';
+    imagePreview.src = '#';
+    resultContainer.textContent = '';
+    resetBtn.style.display = 'none';
+    uploadArea.style.display = 'block';
+    imageUpload.value = '';
+});
 
 imageUpload.addEventListener('change', (e) => {
     handleFiles(e.target.files);
@@ -57,6 +67,7 @@ function handleFiles(files) {
     reader.onload = async (event) => {
         imagePreview.src = event.target.result;
         imagePreview.style.display = 'block';
+        uploadArea.style.display = 'none';
         resultContainer.textContent = 'Analyzing...';
         
         if (!model) await init();
@@ -74,4 +85,5 @@ async function predict() {
     
     let emoji = topResult.className === 'Dog' ? '🐶' : '🐱';
     resultContainer.innerHTML = `Result: ${topResult.className} ${emoji} (${percentage}%)`;
+    resetBtn.style.display = 'block';
 }
