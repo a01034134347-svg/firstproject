@@ -66,6 +66,25 @@ body {
     color: var(--accent-color);
 }
 
+.nav-links li.lang-selector {
+    margin-left: 1rem;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+}
+.nav-links li.lang-selector a {
+    text-decoration: none;
+    color: var(--text-color);
+    opacity: 0.6;
+    margin: 0 5px;
+}
+.nav-links li.lang-selector .active {
+    color: #6C5CE7;
+    font-weight: bold;
+    opacity: 1;
+}
+
 .container {
     max-width: 800px;
     margin: 2rem auto;
