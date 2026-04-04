@@ -1,5 +1,11 @@
 // Localization
 const lang = document.documentElement.lang || 'en';
+
+// Helper to switch language and save preference
+window.changeLanguage = function(newLang) {
+    localStorage.setItem('preferredLang', newLang);
+    window.location.href = newLang + '.html';
+};
 const translations = {
     en: {
         loading: 'AI Model is still loading, please wait...',
