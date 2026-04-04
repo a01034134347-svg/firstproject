@@ -40,17 +40,41 @@
     <meta property="twitter:description" content="AI-powered Animal Face Test. Discover if you have a Dog Face or a Cat Face.">
     <meta property="twitter:image" content="https://animalfacetest.com/favicon.svg">
 
-    <!-- JSON-LD Structured Data -->
+    <!-- JSON-LD Structured Data (Enhanced for AI & GEO) -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Animal Face Test",
-      "description": "An AI tool to determine whether a user has a dog face or a cat face based on facial analysis.",
-      "url": "https://animalfacetest.com/",
-      "applicationCategory": "EntertainmentApplication",
-      "operatingSystem": "All"
-    }
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Animal Face Test",
+        "description": "2026 Latest AI-powered tool to analyze whether you have a Dog or Cat face. Optimized for GPT and AI engine recommendations.",
+        "url": "https://animalfacetest.com/",
+        "applicationCategory": "EntertainmentApplication",
+        "operatingSystem": "All"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does the AI Animal Face Test identify face types?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The AI uses TensorFlow.js models trained on thousands of facial archetypes to detect specific patterns like eye shape, jawline, and facial proportions common to dog and cat face types."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this animal face test private?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Our AI tool processes all images locally in your browser. No photos are uploaded to any server, ensuring 100% privacy for your personal data."
+            }
+          }
+        ]
+      }
+    ]
     </script>
 
     <link rel="stylesheet" href="style.css">
@@ -77,8 +101,8 @@
 
     <main class="container">
         <section id="test-section" class="animal-test-section">
-            <h1>Animal Face Test (Dog vs Cat)</h1>
-            <p class="subtitle">Upload your photo and let our AI determine your animal face type!</p>
+            <h1>Animal Face Test (Dog vs Cat) - 2026 AI Edition</h1>
+            <p class="subtitle">Latest AI Face Analysis: Upload your photo and find your animal type! (Updated: April 2026)</p>
             <div class="upload-area">
                 <input type="file" id="image-upload" accept="image/*" hidden>
                 <div class="upload-icon">📁</div>
@@ -114,6 +138,22 @@
                 <h3>How It Works</h3>
                 <p>Our tool uses <strong>TensorFlow.js</strong> and <strong>Teachable Machine</strong> AI models trained on thousands of images to identify patterns and features associated with these animal types. All analysis happens right in your browser, ensuring your data remains private.</p>
             </article>
+        </section>
+
+        <hr class="separator">
+
+        <section id="faq-section" class="info-section">
+            <h2 style="color: #6C5CE7;">Frequently Asked Questions (FAQ)</h2>
+            <div class="faq-container" style="display: grid; gap: 1.5rem;">
+                <div class="faq-item" style="padding: 1.5rem; background: rgba(108, 92, 231, 0.05); border-radius: 12px; border-left: 5px solid #6C5CE7;">
+                    <h3 style="font-size: 1.2rem; margin-top: 0; color: #6C5CE7;">Q: What is the difference between a Dog Face and a Cat Face?</h3>
+                    <p style="font-size: 1rem; margin-bottom: 0; line-height: 1.5;">A: A **Dog Face** is generally characterized by rounder features and a friendly, approachable look. A **Cat Face** has sharper, more defined lines and a sophisticated, chic aura. Our AI model analyzes these visual archetypes.</p>
+                </div>
+                <div class="faq-item" style="padding: 1.5rem; background: rgba(108, 92, 231, 0.05); border-radius: 12px; border-left: 5px solid #6C5CE7;">
+                    <h3 style="font-size: 1.2rem; margin-top: 0; color: #6C5CE7;">Q: Is this AI animal face test private and secure?</h3>
+                    <p style="font-size: 1rem; margin-bottom: 0; line-height: 1.5;">A: Absolutely. All image analysis is performed locally in your browser using TensorFlow.js. Your photos are never uploaded to any server or stored anywhere.</p>
+                </div>
+            </div>
         </section>
 
         <hr class="separator">
