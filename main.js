@@ -1,11 +1,6 @@
 // Localization
 const lang = document.documentElement.lang || 'en';
 
-// Helper to switch language and save preference
-window.changeLanguage = function(newLang) {
-    localStorage.setItem('preferredLang', newLang);
-    window.location.href = newLang + '.html';
-};
 const translations = {
     en: {
         loading: 'AI Model is still loading, please wait...',
@@ -37,18 +32,26 @@ const translations = {
 
 const t = translations[lang] || translations.en;
 
+// UI Elements
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
+const imageUpload = document.getElementById('image-upload');
+const uploadBtn = document.getElementById('upload-btn');
+const imagePreview = document.getElementById('image-preview');
+const resultContainer = document.getElementById('result-container');
+const uploadArea = document.querySelector('.upload-area');
+const resetBtn = document.getElementById('reset-btn');
+const shareSection = document.getElementById('share-section');
+
+let currentResultTitle = '';
 
 // Theme toggle logic
-themeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark');
-    if (body.classList.contains('dark')) {
-        themeToggle.textContent = t.themeLight;
-    } else {
-        themeToggle.textContent = t.themeDark;
-    }
-});
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark');
+        themeToggle.textContent = body.classList.contains('dark') ? t.themeLight : t.themeDark;
+    });
+}
 
 // Teachable Machine logic
 const URL = "https://teachablemachine.withgoogle.com/models/WbTY28uhe/";
@@ -65,49 +68,49 @@ async function init() {
         console.log("Model loaded successfully");
     } catch (e) {
         console.error("Failed to load model:", e);
-        resultContainer.textContent = t.errorModel;
+        if (resultContainer) resultContainer.textContent = t.errorModel;
     }
 }
 
-// Start loading the model immediately
 init();
 
-const imageUpload = document.getElementById('image-upload');
-const uploadBtn = document.getElementById('upload-btn');
-const imagePreview = document.getElementById('image-preview');
-const resultContainer = document.getElementById('result-container');
-const uploadArea = document.querySelector('.upload-area');
-const resetBtn = document.getElementById('reset-btn');
+// Event Listeners
+if (uploadBtn) uploadBtn.addEventListener('click', () => imageUpload.click());
 
-uploadBtn.addEventListener('click', () => imageUpload.click());
+if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+        imagePreview.style.display = 'none';
+        imagePreview.src = '#';
+        resultContainer.textContent = '';
+        resetBtn.style.display = 'none';
+        if (shareSection) shareSection.style.display = 'none';
+        uploadArea.style.display = 'block';
+        imageUpload.value = '';
+    });
+}
 
-resetBtn.addEventListener('click', () => {
-    imagePreview.style.display = 'none';
-    imagePreview.src = '#';
-    resultContainer.textContent = '';
-    resetBtn.style.display = 'none';
-    uploadArea.style.display = 'block';
-    imageUpload.value = '';
-});
+if (imageUpload) {
+    imageUpload.addEventListener('change', (e) => {
+        handleFiles(e.target.files);
+    });
+}
 
-imageUpload.addEventListener('change', (e) => {
-    handleFiles(e.target.files);
-});
+if (uploadArea) {
+    uploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        uploadArea.classList.add('dragover');
+    });
 
-uploadArea.addEventListener('dragover', (e) => {
-    e.preventDefault();
-    uploadArea.classList.add('dragover');
-});
+    uploadArea.addEventListener('dragleave', () => {
+        uploadArea.classList.remove('dragover');
+    });
 
-uploadArea.addEventListener('dragleave', () => {
-    uploadArea.classList.remove('dragover');
-});
-
-uploadArea.addEventListener('drop', (e) => {
-    e.preventDefault();
-    uploadArea.classList.remove('dragover');
-    handleFiles(e.dataTransfer.files);
-});
+    uploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        uploadArea.classList.remove('dragover');
+        handleFiles(e.dataTransfer.files);
+    });
+}
 
 function handleFiles(files) {
     const file = files[0];
@@ -119,11 +122,9 @@ function handleFiles(files) {
         imagePreview.style.display = 'block';
         uploadArea.style.display = 'none';
         
-        // Wait for image to load before predicting
         imagePreview.onload = async () => {
             if (isModelLoading) {
                 resultContainer.textContent = t.loading;
-                // Wait for model to load if it hasn't yet
                 while (isModelLoading) {
                     await new Promise(resolve => setTimeout(resolve, 500));
                 }
@@ -138,7 +139,6 @@ function handleFiles(files) {
 async function predict() {
     try {
         const prediction = await model.predict(imagePreview);
-        
         const dogPred = prediction[0];
         const catPred = prediction[1];
         
@@ -148,9 +148,7 @@ async function predict() {
         const topResult = [...prediction].sort((a, b) => b.probability - a.probability)[0];
         const isDog = topResult.className.toLowerCase().includes('dog') || topResult === dogPred;
         
-        let emoji = '';
-        let description = '';
-        let resultTitle = '';
+        let emoji = '', description = '', resultTitle = '';
 
         if (isDog) {
             emoji = '🐶';
@@ -162,7 +160,7 @@ async function predict() {
             description = t.catDesc;
         }
         
-        currentResultTitle = resultTitle; // Store for sharing
+        currentResultTitle = resultTitle;
 
         resultContainer.innerHTML = `
             <div style="margin-bottom: 1rem;">
@@ -175,35 +173,41 @@ async function predict() {
             <p style="font-size: 0.9rem; font-weight: normal; color: var(--text-color); opacity: 0.8; line-height: 1.4;">${description}</p>
         `;
         resetBtn.style.display = 'block';
-        shareSection.style.display = 'block'; // Show share section
+        if (shareSection) shareSection.style.display = 'block';
     } catch (e) {
         console.error("Prediction failed:", e);
         resultContainer.textContent = t.errorPredict;
         resetBtn.style.display = 'block';
     }
 }
-         resultTitle = t.dogFace;
-            description = t.dogDesc;
-        } else {
-            emoji = '🐱';
-            resultTitle = t.catFace;
-            description = t.catDesc;
-        }
-        
-        resultContainer.innerHTML = `
-            <div style="margin-bottom: 1rem;">
-                <div style="font-size: 1.4rem; margin-bottom: 0.5rem;">${t.result}: ${resultTitle} ${emoji}</div>
-                <div style="display: flex; justify-content: space-around; font-size: 1rem; margin-bottom: 1rem; background: rgba(0,0,0,0.05); padding: 10px; border-radius: 8px;">
-                    <span>🐶 ${t.dogFace}: ${dogPercent}%</span>
-                    <span>🐱 ${t.catFace}: ${catPercent}%</span>
-                </div>
-            </div>
-            <p style="font-size: 0.9rem; font-weight: normal; color: var(--text-color); opacity: 0.8; line-height: 1.4;">${description}</p>
-        `;
-        resetBtn.style.display = 'block';
-    } catch (e) {
-        console.error("Prediction failed:", e);
-        resultContainer.textContent = t.errorPredict;
-        resetBtn.style.display = 'block';
+
+// Share functions
+window.shareTwitter = function() {
+    const text = `${t.result}: ${currentResultTitle}! Find your animal face type at AnimalFaceTest. #AnimalFaceTest #AI`;
+    const url = window.location.href;
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
+};
+
+window.shareFacebook = function() {
+    const url = window.location.href;
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+};
+
+window.copyUrl = function() {
+    const url = window.location.href;
+    navigator.clipboard.writeText(url).then(() => {
+        alert(lang === 'ko' ? '링크가 클립보드에 복사되었습니다!' : 'Link copied to clipboard!');
+    });
+};
+
+window.shareAll = function() {
+    if (navigator.share) {
+        navigator.share({
+            title: 'Animal Face Test',
+            text: `${t.result}: ${currentResultTitle}! Check your animal face type!`,
+            url: window.location.href,
+        }).catch(console.error);
+    } else {
+        copyUrl();
     }
-}
+};
