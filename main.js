@@ -139,14 +139,16 @@ function handleFiles(files) {
 async function predict() {
     try {
         const prediction = await model.predict(imagePreview);
-        const dogPred = prediction[0];
-        const catPred = prediction[1];
+        
+        // Find probabilities by searching for class names
+        const dogPred = prediction.find(p => p.className.toLowerCase().includes('dog')) || prediction[0];
+        const catPred = prediction.find(p => p.className.toLowerCase().includes('cat')) || prediction[1];
         
         const dogPercent = (dogPred.probability * 100).toFixed(2);
         const catPercent = (catPred.probability * 100).toFixed(2);
         
         const topResult = [...prediction].sort((a, b) => b.probability - a.probability)[0];
-        const isDog = topResult.className.toLowerCase().includes('dog') || topResult === dogPred;
+        const isDog = topResult.className.toLowerCase().includes('dog');
         
         let emoji = '', description = '', resultTitle = '';
 
