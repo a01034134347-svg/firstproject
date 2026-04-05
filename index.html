@@ -113,6 +113,18 @@
                 <img id="image-preview" src="#" alt="User photo for animal face analysis" style="display: none; max-width: 100%; border-radius: 10px; margin-top: 1rem;">
             </div>
             <div id="result-container" style="margin-top: 1rem; font-size: 1.2rem; font-weight: bold;"></div>
+            
+            <!-- SNS Share Section -->
+            <div id="share-section" class="share-section">
+                <p class="share-title">Share your result!</p>
+                <div class="share-buttons">
+                    <button class="share-btn btn-twitter" onclick="shareTwitter()" title="Twitter">X</button>
+                    <button class="share-btn btn-facebook" onclick="shareFacebook()" title="Facebook">f</button>
+                    <button class="share-btn btn-copy" onclick="copyUrl()" title="Copy Link">🔗</button>
+                    <button class="share-btn btn-share-all" onclick="shareAll()" title="Share to other apps">📤</button>
+                </div>
+            </div>
+
             <button id="reset-btn" class="secondary-btn" style="display: none; margin-top: 1rem; background-color: #f39c12;">Try Again</button>
         </section>
 

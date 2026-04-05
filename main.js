@@ -162,6 +162,34 @@ async function predict() {
             description = t.catDesc;
         }
         
+        currentResultTitle = resultTitle; // Store for sharing
+
+        resultContainer.innerHTML = `
+            <div style="margin-bottom: 1rem;">
+                <div style="font-size: 1.4rem; margin-bottom: 0.5rem;">${t.result}: ${resultTitle} ${emoji}</div>
+                <div style="display: flex; justify-content: space-around; font-size: 1rem; margin-bottom: 1rem; background: rgba(0,0,0,0.05); padding: 10px; border-radius: 8px;">
+                    <span>🐶 ${t.dogFace}: ${dogPercent}%</span>
+                    <span>🐱 ${t.catFace}: ${catPercent}%</span>
+                </div>
+            </div>
+            <p style="font-size: 0.9rem; font-weight: normal; color: var(--text-color); opacity: 0.8; line-height: 1.4;">${description}</p>
+        `;
+        resetBtn.style.display = 'block';
+        shareSection.style.display = 'block'; // Show share section
+    } catch (e) {
+        console.error("Prediction failed:", e);
+        resultContainer.textContent = t.errorPredict;
+        resetBtn.style.display = 'block';
+    }
+}
+         resultTitle = t.dogFace;
+            description = t.dogDesc;
+        } else {
+            emoji = '🐱';
+            resultTitle = t.catFace;
+            description = t.catDesc;
+        }
+        
         resultContainer.innerHTML = `
             <div style="margin-bottom: 1rem;">
                 <div style="font-size: 1.4rem; margin-bottom: 0.5rem;">${t.result}: ${resultTitle} ${emoji}</div>
