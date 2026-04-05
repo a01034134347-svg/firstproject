@@ -140,16 +140,16 @@ async function predict() {
     try {
         const prediction = await model.predict(imagePreview);
         
-        // Final Correction: Class 1 = Dog, Class 2 = Cat
-        // Based on "Result: Cat, Dog: 98%" error, the indices were definitely swapped.
-        const dogPred = prediction[0]; // Class 1
-        const catPred = prediction[1]; // Class 2
+        // Final Correct Mapping: Index 0 = Cat, Index 1 = Dog
+        // User confirmed cat photos show 100% at index 0, so index 0 is Cat.
+        const catPred = prediction[0]; // Class 1 (Cat)
+        const dogPred = prediction[1]; // Class 2 (Dog)
         
         const dogPercent = (dogPred.probability * 100).toFixed(2);
         const catPercent = (catPred.probability * 100).toFixed(2);
         
         const topResult = [...prediction].sort((a, b) => b.probability - a.probability)[0];
-        const isDog = topResult === dogPred; // True if Class 1 is higher
+        const isDog = topResult === dogPred; // True if Index 1 (Dog) is higher
         
         let emoji = '', description = '', resultTitle = '';
 
