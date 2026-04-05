@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 분석 원리 - 동물상 테스트</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-page { max-width: 800px; margin: 4rem auto; padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        h1 { color: #6C5CE7; }
+        h2 { margin-top: 2rem; color: #2D3436; }
+        p { line-height: 1.6; color: #636E72; }
+        .tech-step { margin-bottom: 2rem; padding: 1.5rem; background: #f9f9ff; border-radius: 8px; border-left: 4px solid #6C5CE7; }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo"><a href="/index-ko.html" style="text-decoration: none; color: inherit;">🐾 동물상 테스트</a></div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/index-ko.html">홈</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <article class="content-page">
+            <h1>동물상 분석의 과학적 원리</h1>
+            <p>단순히 사진을 보고 추측하는 것이 아닙니다. 저희 AI는 얼굴의 기하학적 구조를 분석하여 결과를 도출합니다.</p>
+
+            <div class="tech-step">
+                <h3>1. 얼굴 랜드마크 감지</h3>
+                <p>눈, 코, 입, 턱선 등 얼굴에서 68개의 주요 지점을 감지합니다. 이 과정은 TensorFlow.js를 통해 사용자의 브라우저에서 실시간으로 이루어집니다.</p>
+            </div>
+
+            <div class="tech-step">
+                <h3>2. 특징 추출</h3>
+                <p>감지된 지점들 사이의 거리와 각도를 계산합니다. 예를 들어, 눈의 가로세로 비율, 턱의 각도, 이마의 너비 등을 수치화합니다.</p>
+            </div>
+
+            <div class="tech-step">
+                <h3>3. 신경망 분류</h3>
+                <p>추출된 데이터는 수많은 동물상 모델링 데이터와 비교됩니다. 딥러닝 모델이 사용자의 얼굴 특징이 강아지, 고양이, 토끼 등 어떤 카테고리와 가장 높은 일치율을 보이는지 판단합니다.</p>
+            </div>
+
+            <h2>프라이버시가 중요한 이유</h2>
+            <p>이 모든 과정이 브라우저에서 처리되므로 귀중한 개인의 얼굴 사진이 서버로 전송될 필요가 없습니다. 이는 가장 안전한 AI 이용 방식입니다.</p>
+        </article>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2026 동물상 테스트. All rights reserved.</p>
+    </footer>
+</body>
+</html>

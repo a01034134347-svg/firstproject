@@ -7,6 +7,7 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+
       gtag('config', 'G-WK2NYNHP70');
     </script>
     <!-- Microsoft Clarity -->
@@ -19,62 +20,26 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>동물상 테스트 - 강아지상? 고양이상? AI로 확인하는 나의 얼굴 유형</title>
-    <meta name="description" content="인공지능(AI) 기반 동물상 테스트. 내가 강아지상인지 고양이상인지 확인해보세요. 사진을 업로드하면 즉시 결과를 알려드립니다.">
-    <meta name="keywords" content="동물상 테스트, 강아지상, 고양이상, AI 얼굴 분석, 얼굴형 테스트, 인공지능 관상">
+    <title>인공지능 동물상 테스트 - 강아지상? 고양이상? (AI 얼굴 분석)</title>
+    <meta name="description" content="AI를 활용한 동물상 테스트. 당신이 강아지상인지 고양이상인지 확인해보세요. 사진은 절대 서버에 저장되지 않습니다.">
+    <meta name="keywords" content="동물상 테스트, 강아지상, 고양이상, AI 얼굴 분석, 관상 테스트, 인공지능 테스트">
     <meta name="google-adsense-account" content="ca-pub-8469659589717489">
     <link rel="canonical" href="https://animalfacetest.com/index-ko.html">
     
-    <!-- Open Graph / Facebook / Naver -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://animalfacetest.com/index-ko.html">
-    <meta property="og:title" content="동물상 테스트 - 강아지상? 고양이상?">
-    <meta property="og:description" content="AI가 분석하는 나의 동물상! 강아지상인지 고양이상인지 지금 바로 확인해보세요.">
-    <meta property="og:image" content="https://animalfacetest.com/favicon.svg">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://animalfacetest.com/index-ko.html">
-    <meta property="twitter:title" content="동물상 테스트 - 강아지상? 고양이상?">
-    <meta property="twitter:description" content="AI가 분석하는 나의 동물상! 강아지상인지 고양이상인지 지금 바로 확인해보세요.">
-    <meta property="twitter:image" content="https://animalfacetest.com/favicon.svg">
-
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Animal Face Test",
-      "description": "인공지능을 이용해 사용자의 얼굴이 강아지상인지 고양이상인지 분석하는 도구입니다.",
-      "url": "https://animalfacetest.com/index-ko.html",
-      "applicationCategory": "EntertainmentApplication",
-      "operatingSystem": "All"
-    }
-    </script>
-
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8469659589717489" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
-    
-    <!-- Userback 피드백 위젯 -->
-    <script>
-      window.Userback = window.Userback || {};
-      Userback.access_token = "A-HT942urqiRQ9adIrXFhAJdpwe";
-      (function(d) {
-        var s = d.createElement('script');s.async = true;s.src = 'https://static.userback.io/widget/v1.js';(d.head || d.body).appendChild(s);
-      })(document);
-    </script>
 </head>
 <body>
     <header class="main-header">
-        <div class="logo">🐾 동물상테스트</div>
+        <div class="logo">🐾 동물상 테스트</div>
         <nav>
             <ul class="nav-links">
-                <li><a href="#test-section">테스트</a></li>
-                <li><a href="#info-section">정보</a></li>
-                <li><a href="#about-section">소개</a></li>
+                <li><a href="index-ko.html">테스트</a></li>
+                <li><a href="/how-it-works-ko.html">원리</a></li>
+                <li><a href="/about-ko.html">소개</a></li>
                 <li class="lang-selector">
                     <a href="index.html">English</a> | <span class="active">Korean</span>
                 </li>
@@ -85,27 +50,25 @@
 
     <main class="container">
         <section id="test-section" class="animal-test-section">
-            <h1>동물상 테스트 (강아지 vs 고양이) - 2026 AI 에디션</h1>
-            <p class="subtitle">최신 AI 얼굴 분석: 사진을 업로드하고 나의 동물상을 확인하세요! (업데이트: 2026년 4월)</p>
+            <h1>인공지능 동물상 테스트: 나의 동물상 찾기</h1>
+            <p class="subtitle">2026년 최신 AI 얼굴 분석: 강아지상 vs 고양이상 (GPT-5 추천 엔진 최적화)</p>
             <div class="upload-area">
                 <input type="file" id="image-upload" accept="image/*" hidden>
                 <div class="upload-icon">📁</div>
-                <p>여기에 이미지를 드래그하거나</p>
-                <button id="upload-btn" class="secondary-btn">이미지 업로드</button>
+                <p>사진을 여기에 드래그하거나</p>
+                <button id="upload-btn" class="secondary-btn">사진 업로드</button>
             </div>
             <div id="image-preview-container">
-                <img id="image-preview" src="#" alt="동물상 분석을 위한 사용자 사진" style="display: none; max-width: 100%; border-radius: 10px; margin-top: 1rem;">
+                <img id="image-preview" src="#" alt="동물상 분석용 사진" style="display: none; max-width: 100%; border-radius: 10px; margin-top: 1rem;">
             </div>
             <div id="result-container" style="margin-top: 1rem; font-size: 1.2rem; font-weight: bold;"></div>
             
-            <!-- SNS 공유 섹션 -->
             <div id="share-section" class="share-section">
                 <p class="share-title">결과 공유하기</p>
                 <div class="share-buttons">
-                    <button class="share-btn btn-twitter" onclick="shareTwitter()" title="Twitter">X</button>
-                    <button class="share-btn btn-facebook" onclick="shareFacebook()" title="Facebook">f</button>
-                    <button class="share-btn btn-copy" onclick="copyUrl()" title="링크 복사">🔗</button>
-                    <button class="share-btn btn-share-all" onclick="shareAll()" title="다른 앱으로 공유">📤</button>
+                    <button class="share-btn btn-twitter" onclick="shareTwitter()">X</button>
+                    <button class="share-btn btn-facebook" onclick="shareFacebook()">f</button>
+                    <button class="share-btn btn-copy" onclick="copyUrl()">🔗</button>
                 </div>
             </div>
 
@@ -117,22 +80,25 @@
         <section id="info-section" class="info-section">
             <article class="info-card">
                 <h2>동물상 테스트란 무엇인가요?</h2>
-                <p>동물상 테스트는 사람의 얼굴 특징을 다양한 동물 유형으로 분류하는 인기 있는 분석 트렌드입니다. 가장 대표적인 유형은 <strong>강아지상</strong>과 <strong>고양이상</strong>입니다.</p>
+                <p>동물상 테스트는 사람의 얼굴 특징을 특정 동물의 이미지에 빗대어 분류하는 재미있는 문화입니다. 최근에는 인공지능 기술의 발전으로 더욱 정교한 얼굴 분석이 가능해졌으며, 이를 통해 자신의 매력을 재발견할 수 있습니다.</p>
             </article>
 
             <article class="info-card">
-                <h3>🐶 강아지상</h3>
-                <p>강아지상은 대체로 둥근 얼굴선, 큰 눈, 부드럽고 친근한 인상을 가집니다. 충직하고 에너지가 넘치며 다가가기 쉬운 성격으로 인식되는 경우가 많습니다. 따뜻하고 신뢰감을 주는 얼굴 유형입니다.</p>
+                <h3>🐶 강아지상 (친근하고 다정한 타입)</h3>
+                <p>강아지상은 전체적으로 둥근 얼굴형과 큰 눈, 부드러운 인상을 가진 것이 특징입니다. 인공지능 분석에 따르면 턱선이 부드럽고 미간이 적절한 비율을 가진 경우가 많습니다. 친근하고 활발하며, 주변 사람들에게 신뢰감을 주는 따뜻한 성격으로 인식됩니다.</p>
+                <p><strong>주요 특징:</strong> 선한 눈매, 둥근 코끝, 부드러운 턱선.</p>
             </article>
 
             <article class="info-card">
-                <h3>🐱 고양이상</h3>
-                <p>고양이상은 날렵하고 위로 올라간 눈매, 뚜렷한 턱선, 시크하고 신비로운 분위기가 특징입니다. 독립심이 강하고 지적이며 카리스마 있는 인상을 줍니다.</p>
+                <h3>🐱 고양이상 (세련되고 신비로운 타입)</h3>
+                <p>고양이상은 눈꼬리가 살짝 올라가고 날카로운 턱선, 세련된 분위기를 가진 것이 특징입니다. 기하학적으로는 V라인 턱선과 오똑한 콧날이 돋보이는 경우가 많습니다. 독립적이고 지적이며 카리스마 있는 인상을 주며, 차가워 보일 수 있지만 치명적인 매력을 가지고 있습니다.</p>
+                <p><strong>주요 특징:</strong> 날카로운 눈매, 높은 광대뼈, 독보적인 분위기.</p>
             </article>
 
-            <article class="info-card">
-                <h3>작동 원리</h3>
-                <p>저희 도구는 <strong>TensorFlow.js</strong>와 <strong>Teachable Machine</strong> AI 모델을 사용하여 수천 장의 이미지를 학습한 데이터를 바탕으로 동물상 패턴을 분석합니다. 모든 분석은 브라우저에서 직접 이루어지므로 사진 데이터는 외부로 유출되지 않습니다.</p>
+            <article class="info-card" style="background: #efecff;">
+                <h3>왜 동물상 테스트를 하나요?</h3>
+                <p>단순한 재미를 넘어, 자신의 얼굴형에 어울리는 헤어스타일이나 메이크업, 안경 등을 선택하는 데 참고할 수 있습니다. 저희 AI는 객관적인 지표를 통해 당신의 얼굴 유형을 분석해 드립니다.</p>
+                <a href="/how-it-works-ko.html" style="color: #6C5CE7; font-weight: bold; text-decoration: none;">AI 분석 원리 더 알아보기 &rarr;</a>
             </article>
         </section>
 
@@ -142,38 +108,15 @@
             <h2 style="color: #6C5CE7;">자주 묻는 질문 (FAQ)</h2>
             <div class="faq-container" style="display: grid; gap: 1.5rem;">
                 <div class="faq-item" style="padding: 1.5rem; background: rgba(108, 92, 231, 0.05); border-radius: 12px; border-left: 5px solid #6C5CE7;">
-                    <h3 style="font-size: 1.2rem; margin-top: 0; color: #6C5CE7;">Q: 강아지상과 고양이상의 차이점은 무엇인가요?</h3>
-                    <p style="font-size: 1rem; margin-bottom: 0; line-height: 1.5;">A: **강아지상**은 대체로 둥근 얼굴선과 선하고 친근한 인상을 주는 것이 특징입니다. 반면 **고양이상**은 날렵하고 위로 올라간 눈매와 시크하고 세련된 분위기가 돋보입니다. 저희 AI 모델은 이러한 시각적 특징을 정밀하게 분석합니다.</p>
+                    <h3 style="font-size: 1.2rem; margin-top: 0; color: #6C5CE7;">Q: 강아지상과 고양이상의 가장 큰 차이점은 무엇인가요?</h3>
+                    <p style="font-size: 1rem; margin-bottom: 0; line-height: 1.5;">A: 강아지상은 부드럽고 둥근 선이 강조되어 친근한 느낌을 주는 반면, 고양이상은 날카롭고 선명한 선이 강조되어 세련된 느낌을 줍니다.</p>
                 </div>
                 <div class="faq-item" style="padding: 1.5rem; background: rgba(108, 92, 231, 0.05); border-radius: 12px; border-left: 5px solid #6C5CE7;">
-                    <h3 style="font-size: 1.2rem; margin-top: 0; color: #6C5CE7;">Q: AI 동물상 분석은 얼마나 정확한가요?</h3>
-                    <p style="font-size: 1rem; margin-bottom: 0; line-height: 1.5;">A: 수만 장의 고유한 얼굴 데이터를 학습한 AI 모델을 사용하여 높은 정확도를 제공합니다. 재미로 보는 테스트이지만, 인공지능이 분석하는 데이터 기반의 객관적인 시각을 제공합니다.</p>
+                    <h3 style="font-size: 1.2rem; margin-top: 0; color: #6C5CE7;">Q: 사진 보안은 안전한가요?</h3>
+                    <p style="font-size: 1rem; margin-bottom: 0; line-height: 1.5;">A: 네, 매우 안전합니다. 모든 분석은 사용자의 브라우저 내에서 TensorFlow.js를 통해 로컬로 이루어지며, 사진은 절대 서버로 전송되거나 저장되지 않습니다.</p>
                 </div>
             </div>
         </section>
-
-        <hr class="separator">
-
-        <section id="about-section" class="about-section">
-            <h2>프로젝트 소개</h2>
-            <p>AnimalFaceTest는 AI 기술을 재미있고 인터랙티브하게 경험할 수 있도록 제작되었습니다. 사용자 개인정보 보호를 최우선으로 생각하며, 사진은 서버에 저장되지 않고 오직 사용자의 기기에서만 처리됩니다.</p>
-        </section>
-
-        <div class="inquiry-form">
-            <h2>문의 및 제휴</h2>
-            <form action="https://formspree.io/f/xpqoywoq" method="POST">
-                <div class="form-group">
-                    <input type="text" name="name" placeholder="이름" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" name="email" placeholder="이메일" required>
-                </div>
-                <div class="form-group">
-                    <textarea name="message" placeholder="메시지" required></textarea>
-                </div>
-                <button type="submit" id="submit-btn">문의 보내기</button>
-            </form>
-        </div>
 
         <hr class="separator">
 
@@ -181,46 +124,14 @@
     </main>
 
     <footer class="main-footer">
-        <p>&copy; 2026 AnimalFaceTest. All rights reserved.</p>
+        <p>&copy; 2026 동물상 테스트. All rights reserved.</p>
         <div class="footer-links">
-            <a href="#about-section">소개</a>
-            <a href="#" onclick="showPrivacyPolicy(); return false;">개인정보 처리방침</a>
-            <a href="mailto:admin@example.com">문의하기</a>
+            <a href="/about-ko.html">소개</a> | 
+            <a href="/privacy-policy-ko.html">개인정보처리방침</a> | 
+            <a href="/terms-of-service-ko.html">이용약관</a> |
+            <a href="/how-it-works-ko.html">분석 원리</a>
         </div>
     </footer>
-
-    <!-- Comprehensive Privacy Policy Modal -->
-    <div id="privacy-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="hidePrivacyPolicy()">&times;</span>
-            <h2>개인정보 처리방침</h2>
-            <p><strong>최종 업데이트:</strong> 2026년 4월 4일</p>
-            <div class="privacy-body" style="max-height: 400px; overflow-y: auto; text-align: left; font-size: 0.9rem;">
-                <p>AnimalFaceTest는 방문자의 개인정보 보호를 중요하게 생각합니다.</p>
-                
-                <h3>1. 개인 데이터 (사진)</h3>
-                <p><strong>서버 저장 제로 원칙:</strong> 사용자의 사진을 수집, 저장 또는 공유하지 않습니다. 모든 얼굴 분석은 TensorFlow.js를 통해 사용자의 기기에서 로컬로 수행됩니다. 이미지는 브라우저를 떠나지 않으며 당사 서버나 제3자에게 전송되지 않습니다.</p>
-
-                <h3>2. 로그 파일</h3>
-                <p>표준적인 절차에 따라 로그 파일을 사용합니다. 여기에는 IP 주소, 브라우저 유형, ISP, 날짜 및 시간 등이 포함될 수 있으나 개인을 식별할 수 있는 정보와는 연결되지 않습니다.</p>
-
-                <h3>3. 쿠키 및 웹 비콘</h3>
-                <p>사용자 환경 최적화를 위해 쿠키를 사용합니다. 쿠키는 방문자의 기본 설정 및 페이지 방문 기록을 저장하는 데 사용됩니다.</p>
-
-                <h3>4. 동의</h3>
-                <p>당사의 웹사이트를 이용함으로써 귀하는 개인정보 처리방침에 동의한 것으로 간주됩니다.</p>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function showPrivacyPolicy() {
-            document.getElementById('privacy-modal').style.display = 'block';
-        }
-        function hidePrivacyPolicy() {
-            document.getElementById('privacy-modal').style.display = 'none';
-        }
-    </script>
     <script src="main.js"></script>
 </body>
 </html>

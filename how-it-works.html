@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How it Works: AI Animal Face Analysis - AnimalFaceTest</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-page { max-width: 800px; margin: 4rem auto; padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        h1 { color: #6C5CE7; }
+        h2 { margin-top: 2rem; color: #2D3436; }
+        p { line-height: 1.6; color: #636E72; }
+        .tech-step { margin-bottom: 2rem; padding: 1.5rem; background: #f9f9ff; border-radius: 8px; border-left: 4px solid #6C5CE7; }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo"><a href="/" style="text-decoration: none; color: inherit;">🐾 AnimalFaceTest</a></div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/how-it-works.html">Science</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <article class="content-page">
+            <h1>The Science Behind Animal Face Analysis</h1>
+            <p>Our Animal Face Test isn't just a random guesser. It uses advanced computer vision and machine learning to analyze the geometric features of your face.</p>
+
+            <div class="tech-step">
+                <h3>1. Facial Landmark Detection</h3>
+                <p>We use a pre-trained model to identify 68 specific points on the face, including the eyes, nose, mouth, and jawline. This mapping is done entirely in your browser using TensorFlow.js.</p>
+            </div>
+
+            <div class="tech-step">
+                <h3>2. Feature Extraction</h3>
+                <p>The model calculates ratios, such as the distance between the eyes relative to the width of the face, the sharpness of the jawline, and the height of the forehead.</p>
+            </div>
+
+            <div class="tech-step">
+                <h3>3. Neural Network Classification</h3>
+                <p>These features are compared against thousands of "archetypal" images for various animal types (Dog, Cat, Rabbit, etc.). The final percentage result is the probability that your face matches one of these archetypes.</p>
+            </div>
+
+            <h2>Why Privacy Matters</h2>
+            <p>Because this happens in the browser, your image never leaves your computer. This is the gold standard for privacy in AI applications.</p>
+        </article>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2026 AnimalFaceTest. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="/privacy-policy.html">Privacy</a> | <a href="/terms-of-service.html">Terms</a>
+        </div>
+    </footer>
+</body>
+</html>

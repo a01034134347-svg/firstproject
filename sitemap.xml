@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://animalfacetest.com/</loc>
-    <lastmod>2026-04-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://animalfacetest.com/index-ko.html</loc>
-    <lastmod>2026-04-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+  <url><loc>https://animalfacetest.com/</loc><priority>1.0</priority></url>
+  <url><loc>https://animalfacetest.com/index-ko.html</loc><priority>0.9</priority></url>
+  <url><loc>https://animalfacetest.com/about.html</loc><priority>0.8</priority></url>
+  <url><loc>https://animalfacetest.com/about-ko.html</loc><priority>0.8</priority></url>
+  <url><loc>https://animalfacetest.com/how-it-works.html</loc><priority>0.8</priority></url>
+  <url><loc>https://animalfacetest.com/how-it-works-ko.html</loc><priority>0.8</priority></url>
+  <url><loc>https://animalfacetest.com/privacy-policy.html</loc><priority>0.5</priority></url>
+  <url><loc>https://animalfacetest.com/privacy-policy-ko.html</loc><priority>0.5</priority></url>
+  <url><loc>https://animalfacetest.com/terms-of-service.html</loc><priority>0.5</priority></url>
+  <url><loc>https://animalfacetest.com/terms-of-service-ko.html</loc><priority>0.5</priority></url>
 </urlset>
