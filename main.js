@@ -140,15 +140,16 @@ async function predict() {
     try {
         const prediction = await model.predict(imagePreview);
         
-        // Find probabilities by searching for class names
-        const dogPred = prediction.find(p => p.className.toLowerCase().includes('dog')) || prediction[0];
-        const catPred = prediction.find(p => p.className.toLowerCase().includes('cat')) || prediction[1];
+        // Metadata says ["Class 1", "Class 2"]. 
+        // Based on user feedback, Class 1 seems to be Cat and Class 2 seems to be Dog.
+        const catPred = prediction[0]; // Class 1
+        const dogPred = prediction[1]; // Class 2
         
         const dogPercent = (dogPred.probability * 100).toFixed(2);
         const catPercent = (catPred.probability * 100).toFixed(2);
         
         const topResult = [...prediction].sort((a, b) => b.probability - a.probability)[0];
-        const isDog = topResult.className.toLowerCase().includes('dog');
+        const isDog = topResult === dogPred; // True if Class 2 is higher
         
         let emoji = '', description = '', resultTitle = '';
 
