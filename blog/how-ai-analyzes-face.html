@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WK2NYNHP70"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-WK2NYNHP70');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How AI Analyzes Your Face: The Technology Explained | AnimalFaceTest Blog</title>
+    <meta name="description" content="Discover how TensorFlow.js and machine learning power the Animal Face Test. Learn how browser-based AI analyzes facial geometry to classify dog and cat face types.">
+    <meta name="keywords" content="AI face analysis, TensorFlow.js, machine learning face test, browser AI, facial recognition technology, animal face test technology">
+    <meta name="google-adsense-account" content="ca-pub-8469659589717489">
+    <link rel="canonical" href="https://animalfacetest.com/blog/how-ai-analyzes-face.html">
+    <meta property="og:title" content="How AI Analyzes Your Face: The Technology Explained">
+    <meta property="og:url" content="https://animalfacetest.com/blog/how-ai-analyzes-face.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../blog.css">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8469659589717489" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo">🐾 AnimalFaceTest</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/">Test</a></li>
+                <li><a href="/how-it-works.html">Science</a></li>
+                <li><a href="/blog.html">Blog</a></li>
+                <li><a href="/about.html">About</a></li>
+            </ul>
+        </nav>
+        <button id="theme-toggle" onclick="document.body.classList.toggle('dark'); this.textContent = document.body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';">Dark Mode</button>
+    </header>
+
+    <main>
+        <div class="article-container">
+            <a href="/blog.html" class="article-back">← Back to Blog</a>
+            <div class="article-hero-img" style="background: linear-gradient(135deg, #f0f4ff 0%, #a5b4fc 100%);">🤖</div>
+            <div class="article-meta">
+                <span class="article-tag">Technology</span>
+                <span class="article-date">April 4, 2026</span>
+                <span class="article-readtime">· 8 min read</span>
+            </div>
+            <h1 class="article-title">How AI Analyzes Your Face: The Technology Explained</h1>
+            <p class="article-subtitle">Behind every animal face test result is a sophisticated stack of machine learning technology running entirely inside your browser. Here's a plain-English explanation of exactly how it works — from image capture to final classification.</p>
+
+            <div class="article-body">
+                <h2>The Power of Browser-Based AI</h2>
+                <p>Not long ago, tasks like facial analysis required powerful servers, cloud infrastructure, and significant privacy tradeoffs. Today, thanks to advances in web-based machine learning frameworks, the same analysis can run directly in your browser — on your device, using your own processing power, with no data ever sent to an external server.</p>
+                <p>The Animal Face Test is built on this browser-based AI paradigm. When you upload a photo, the analysis happens locally on your device. The server never sees your image. This represents a genuine shift in how AI can be deployed ethically and privately.</p>
+
+                <h2>The Core Technology: TensorFlow.js</h2>
+                <p>At the heart of the Animal Face Test is TensorFlow.js — Google's open-source machine learning library specifically designed to run in web browsers. TensorFlow.js enables developers to build, train, and deploy machine learning models that run directly in JavaScript, without any server-side processing.</p>
+                <p>TensorFlow.js supports WebGL acceleration, which means it can leverage your device's GPU to run complex neural network computations at remarkable speeds — often in under a second for image classification tasks. This is what makes real-time browser-based AI analysis practical.</p>
+
+                <h2>What Is a Convolutional Neural Network?</h2>
+                <p>The underlying model used for face type classification is a Convolutional Neural Network (CNN) — the same type of architecture that powers most image recognition systems today. A CNN works by:</p>
+                <ol>
+                    <li><strong>Receiving an image</strong> as a grid of pixel values.</li>
+                    <li><strong>Applying convolutional filters</strong> that detect low-level features like edges, curves, and textures.</li>
+                    <li><strong>Building up complexity</strong> through multiple layers, detecting increasingly abstract features — from eye corners to jawline angles to overall facial shape.</li>
+                    <li><strong>Outputting a classification</strong> with associated probability scores for each possible category.</li>
+                </ol>
+                <p>For the Animal Face Test, the final output is two probabilities: the likelihood that your facial features match the dog face archetype, and the likelihood they match the cat face archetype. These always sum to 100%.</p>
+
+                <h2>The Role of Teachable Machine</h2>
+                <p>The Animal Face Test model was trained using Google's Teachable Machine platform — an accessible tool that allows the creation of custom image classification models without requiring deep machine learning expertise. Teachable Machine uses transfer learning, which means:</p>
+                <ul>
+                    <li>It starts with a pre-trained base model (MobileNet) that already understands general visual features.</li>
+                    <li>It then fine-tunes this model on a dataset of dog face and cat face examples.</li>
+                    <li>The result is a compact, efficient model that can distinguish between the two archetypes with good accuracy.</li>
+                </ul>
+                <p>Transfer learning is powerful because it leverages years of training on millions of images, applying that foundational knowledge to a specific new task with far less data and computation than training from scratch.</p>
+
+                <h2>How Your Photo Gets Analyzed</h2>
+                <p>Here's a step-by-step walkthrough of what happens when you upload a photo to the Animal Face Test:</p>
+                <ol>
+                    <li><strong>Image loading:</strong> Your photo is loaded into an HTML canvas element inside your browser. No upload to any server occurs at this step.</li>
+                    <li><strong>Preprocessing:</strong> The image is resized and normalized to the dimensions the model expects (typically 224×224 pixels) and pixel values are scaled.</li>
+                    <li><strong>Model inference:</strong> TensorFlow.js feeds the preprocessed image through the neural network layers, performing millions of mathematical operations using your device's CPU or GPU.</li>
+                    <li><strong>Classification:</strong> The model outputs two probability scores — one for each face type.</li>
+                    <li><strong>Result display:</strong> The scores are converted to percentages and displayed, along with the dominant classification and its description.</li>
+                </ol>
+                <p>The entire process typically completes in 1–3 seconds, depending on your device's processing speed.</p>
+
+                <div class="article-callout tertiary">
+                    <p><strong>Privacy Note:</strong> Your image is processed entirely within your browser's JavaScript environment. It is never uploaded to our servers, stored in any database, or transmitted anywhere. After you close or refresh the page, the image data is discarded.</p>
+                </div>
+
+                <h2>What the AI Is Actually Measuring</h2>
+                <p>The CNN isn't following a simple rulebook like "if eyes are round, classify as dog type." Instead, it has learned complex, non-linear patterns from training data — patterns that may be too subtle for explicit description. However, research into interpretable AI suggests the features most influential in this type of classification include:</p>
+                <ul>
+                    <li>The angle of the outer canthi (eye corners)</li>
+                    <li>The curvature of the jaw and chin</li>
+                    <li>Cheekbone prominence relative to overall face width</li>
+                    <li>The ratio of face width to face height</li>
+                    <li>Nose width relative to eye width</li>
+                </ul>
+
+                <h2>Limitations to Know About</h2>
+                <p>Like all machine learning systems, the Animal Face Test has limitations worth understanding:</p>
+                <ul>
+                    <li><strong>Training data bias:</strong> The model was primarily trained on Asian facial data, which may affect accuracy across diverse ethnicities.</li>
+                    <li><strong>Photo quality dependence:</strong> Lighting, angle, expression, and image resolution significantly affect results. A poorly lit photo may produce less reliable classification.</li>
+                    <li><strong>Probabilistic output:</strong> The model gives probabilities, not certainties. High confidence results (90%+) are more reliable than borderline results (55/45 splits).</li>
+                    <li><strong>Cultural framework:</strong> The dog/cat dichotomy is a cultural construct, not a universal biological classification. The model reflects cultural archetypes as encoded in its training data.</li>
+                </ul>
+
+                <h2>The Future of Browser-Based AI</h2>
+                <p>The technology powering the Animal Face Test represents a broader trend toward on-device AI that prioritizes privacy without sacrificing capability. As WebGPU becomes standard and model compression techniques improve, we'll see increasingly sophisticated AI applications running entirely in browsers — from real-time video analysis to complex language processing — with no data ever leaving users' devices.</p>
+
+                <div class="article-cta">
+                    <h3>See the AI in Action</h3>
+                    <p>Experience browser-based AI face analysis yourself — completely private, instant, and free.</p>
+                    <a href="/">Try the AI Test →</a>
+                </div>
+
+                <div class="related-posts">
+                    <h2>Related Articles</h2>
+                    <div class="related-grid">
+                        <a href="/blog/is-ai-face-test-accurate.html" class="related-card"><span>🔬</span><p>Is the AI Face Test Accurate?</p></a>
+                        <a href="/blog/privacy-ai-face-data.html" class="related-card"><span>🔒</span><p>Privacy and AI: Your Face Data</p></a>
+                        <a href="/blog/tips-for-accurate-results.html" class="related-card"><span>📸</span><p>Tips for Accurate Results</p></a>
+                        <a href="/how-it-works.html" class="related-card"><span>⚙️</span><p>How It Works (Full Guide)</p></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2026 AnimalFaceTest. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="/about.html">About Us</a>
+            <a href="/privacy-policy.html">Privacy Policy</a>
+            <a href="/terms-of-service.html">Terms of Service</a>
+            <a href="/blog.html">Blog</a>
+        </div>
+    </footer>
+</body>
+</html>

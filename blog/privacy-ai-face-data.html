@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WK2NYNHP70"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-WK2NYNHP70');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy and AI: How Your Face Data is Kept Safe | AnimalFaceTest Blog</title>
+    <meta name="description" content="Concerned about uploading your photo online? Here's exactly how the Animal Face Test processes your image locally in your browser — and why your biometric data never leaves your device.">
+    <meta name="keywords" content="AI face test privacy, biometric data privacy, browser-based AI privacy, face data security, local AI processing, no server upload face test">
+    <meta name="google-adsense-account" content="ca-pub-8469659589717489">
+    <link rel="canonical" href="https://animalfacetest.com/blog/privacy-ai-face-data.html">
+    <meta property="og:title" content="Privacy and AI: How Your Face Data is Kept Safe">
+    <meta property="og:url" content="https://animalfacetest.com/blog/privacy-ai-face-data.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../blog.css">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8469659589717489" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo">🐾 AnimalFaceTest</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/">Test</a></li>
+                <li><a href="/how-it-works.html">Science</a></li>
+                <li><a href="/blog.html">Blog</a></li>
+                <li><a href="/about.html">About</a></li>
+            </ul>
+        </nav>
+        <button id="theme-toggle" onclick="document.body.classList.toggle('dark'); this.textContent = document.body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';">Dark Mode</button>
+    </header>
+
+    <main>
+        <div class="article-container">
+            <a href="/blog.html" class="article-back">← Back to Blog</a>
+            <div class="article-hero-img" style="background: linear-gradient(135deg, #f0fdff 0%, #a5f3fc 100%);">🔒</div>
+            <div class="article-meta">
+                <span class="article-tag">Privacy</span>
+                <span class="article-date">March 4, 2026</span>
+                <span class="article-readtime">· 6 min read</span>
+            </div>
+            <h1 class="article-title">Privacy and AI: How Your Face Data is Kept Safe</h1>
+            <p class="article-subtitle">Sharing your photo with an AI service can feel like a genuine privacy risk — and in many cases, it is. Here's a complete, transparent explanation of how the Animal Face Test handles your image, and why our architecture makes privacy a technical guarantee rather than a promise.</p>
+
+            <div class="article-body">
+                <h2>Why Facial Privacy Matters</h2>
+                <p>Facial images are among the most sensitive categories of personal data. A face is biometrically unique — it can be used to identify you, track your movements, and be matched across databases without your knowledge. This is why how AI services handle facial images deserves serious scrutiny.</p>
+                <p>In recent years, multiple high-profile cases have emerged of AI applications collecting facial data from users and using it for purposes far beyond the original service — training commercial facial recognition systems, selling data to third parties, or retaining images indefinitely. These practices have led to regulatory action in multiple jurisdictions and significant erosion of user trust.</p>
+
+                <h2>The Standard (Problematic) Approach</h2>
+                <p>Most AI services that analyze photos work by uploading your image to a server, processing it in the cloud, and returning results. This approach has several privacy implications:</p>
+                <ul>
+                    <li>Your image is transmitted over the internet and received by a third-party server</li>
+                    <li>The service operator can see your photo, store it, and use it in ways their terms of service permit</li>
+                    <li>Data breaches can expose user images to malicious actors</li>
+                    <li>Images may be retained for indefinite periods for model training or other purposes</li>
+                    <li>Compliance with data regulations varies by company and jurisdiction</li>
+                </ul>
+
+                <h2>Our Approach: On-Device Processing</h2>
+                <p>The Animal Face Test is built on a fundamentally different architecture. Using TensorFlow.js — Google's browser-based machine learning library — the AI model runs <em>entirely within your browser</em>. Here's what this means in practice:</p>
+
+                <h3>No Server Upload</h3>
+                <p>When you upload a photo, it is loaded directly into your browser's memory as a JavaScript object. It is never transmitted over the internet. Our servers never receive, process, or store your image in any form. This isn't a promise — it's a technical fact of how the system is architected.</p>
+
+                <h3>Local Processing</h3>
+                <p>The AI model itself is downloaded to your browser when you load the page (as a static file, like any other website resource). When you upload your photo, the model runs locally using your device's CPU or GPU through the browser's WebGL interface. All computation happens on your device.</p>
+
+                <h3>Automatic Disposal</h3>
+                <p>When you close or refresh the page, the image data stored in your browser's memory is automatically released. Nothing persists beyond your session. There is no local storage of your photo — it exists only in active memory during the analysis.</p>
+
+                <div class="article-callout tertiary">
+                    <p><strong>Technical Summary:</strong> Image → Your browser memory → Local AI analysis → Results displayed → Memory cleared. At no point does any external party receive or have access to your image.</p>
+                </div>
+
+                <h2>What Data We Do Collect</h2>
+                <p>We believe in complete transparency about data practices. Here's what we do collect:</p>
+                <ul>
+                    <li><strong>Analytics data:</strong> Standard, anonymized page view and interaction data via Google Analytics (no personal identification, no photo data).</li>
+                    <li><strong>Performance data:</strong> Aggregated, anonymized usage metrics to help us improve the service.</li>
+                    <li><strong>Contact form submissions:</strong> If you voluntarily submit the contact form, we receive the information you enter (name, email, message).</li>
+                </ul>
+                <p>We do not collect facial images, biometric data, or any data derived from facial analysis. We have no mechanism to do so, by design.</p>
+
+                <h2>Why We Built It This Way</h2>
+                <p>On-device AI is technically more complex to implement than server-side processing. We chose it deliberately because we believe that services involving biometric data have an ethical obligation to minimize data collection and maximize user control. The on-device architecture isn't a selling point — it's a fundamental design value.</p>
+                <p>It also produces a better user experience in several ways: results appear faster (no network round-trip), the service works without a reliable internet connection after initial load, and there's no risk of server-side latency or downtime affecting analysis speed.</p>
+
+                <h2>Regulatory Context</h2>
+                <p>Biometric data — including facial images and data derived from facial analysis — is classified as sensitive personal data under GDPR (Europe), CCPA (California), BIPA (Illinois), and many other privacy frameworks. By processing this data entirely on-device and never collecting it, the Animal Face Test sidesteps most of the regulatory complexity around biometric data while also doing the right thing for users.</p>
+
+                <h2>How to Verify This Yourself</h2>
+                <p>You don't have to take our word for it. You can verify the on-device processing architecture yourself:</p>
+                <ol>
+                    <li>Open your browser's developer tools (F12 in most browsers)</li>
+                    <li>Navigate to the Network tab</li>
+                    <li>Upload a photo and run the analysis</li>
+                    <li>Observe that no network request containing your image data is made to any server</li>
+                </ol>
+                <p>This kind of independent verification is something we actively encourage. Transparent, verifiable privacy practices are what build genuine trust.</p>
+
+                <div class="article-cta">
+                    <h3>Try the Privacy-First Face Test</h3>
+                    <p>Experience AI facial analysis that never sees your photo. 100% local, 100% private.</p>
+                    <a href="/">Take the Free Test →</a>
+                </div>
+
+                <div class="related-posts">
+                    <h2>Related Articles</h2>
+                    <div class="related-grid">
+                        <a href="/blog/how-ai-analyzes-face.html" class="related-card"><span>🤖</span><p>How AI Analyzes Your Face</p></a>
+                        <a href="/blog/is-ai-face-test-accurate.html" class="related-card"><span>🔬</span><p>Is the AI Face Test Accurate?</p></a>
+                        <a href="/blog/tips-for-accurate-results.html" class="related-card"><span>📸</span><p>Tips for Accurate Results</p></a>
+                        <a href="/about.html" class="related-card"><span>ℹ️</span><p>About AnimalFaceTest</p></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2026 AnimalFaceTest. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="/about.html">About Us</a>
+            <a href="/privacy-policy.html">Privacy Policy</a>
+            <a href="/terms-of-service.html">Terms of Service</a>
+            <a href="/blog.html">Blog</a>
+        </div>
+    </footer>
+</body>
+</html>

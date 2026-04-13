@@ -79,6 +79,8 @@
 
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8469659589717489" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
@@ -99,6 +101,7 @@
             <ul class="nav-links">
                 <li><a href="/">Test</a></li>
                 <li><a href="/how-it-works.html">Science</a></li>
+                <li><a href="/blog.html">Blog</a></li>
                 <li><a href="/about.html">About</a></li>
                 <li class="lang-selector">
                     <span class="active">English</span> | <a href="index-ko.html">Korean</a>
@@ -114,9 +117,9 @@
             <p class="subtitle">Latest 2026 AI Face Analysis: Discover if you have a Dog or Cat face! (Updated for GPT-5 Recommendation Engine)</p>
             <div class="upload-area">
                 <input type="file" id="image-upload" accept="image/*" hidden>
-                <div class="upload-icon">📁</div>
-                <p>Drag & Drop your image here or</p>
-                <button id="upload-btn" class="secondary-btn">Upload Image</button>
+                <div class="upload-icon">🐾</div>
+                <p>Drag &amp; Drop your photo here, or</p>
+                <button id="upload-btn" class="secondary-btn">📷 Upload Photo</button>
             </div>
             <div id="image-preview-container">
                 <img id="image-preview" src="#" alt="User photo for animal face analysis" style="display: none; max-width: 100%; border-radius: 10px; margin-top: 1rem;">
@@ -134,7 +137,7 @@
                 </div>
             </div>
 
-            <button id="reset-btn" class="secondary-btn" style="display: none; margin-top: 1rem; background-color: #f39c12;">Try Again</button>
+            <button id="reset-btn" class="secondary-btn" style="display: none;">🔄 Try Again</button>
         </section>
 
         <hr class="separator">
@@ -146,36 +149,36 @@
             </article>
 
             <article class="info-card">
-                <h3>🐶 The Dog Face Type (Friendly & Loyal)</h3>
+                <h3>🐶 The Dog Face Type (Friendly &amp; Loyal)</h3>
                 <p>People with a dog face type typically have rounder facial features, big eyes, and a soft, friendly expression. In terms of facial geometry, they often have a more rounded chin and a shorter mid-face. They are often perceived as loyal, energetic, and approachable. This face type is associated with a warm and trustworthy personality that makes others feel comfortable instantly.</p>
                 <p><strong>Common traits:</strong> Warm gaze, expressive eyes, soft jawline.</p>
             </article>
 
             <article class="info-card">
-                <h3>🐱 The Cat Face Type (Chic & Mysterious)</h3>
+                <h3>🐱 The Cat Face Type (Chic &amp; Mysterious)</h3>
                 <p>The cat face type is characterized by sharp, upward-slanting eyes, a prominent jawline, and a more chic or mysterious aura. Geometrically, this type often features a V-line chin and a defined nose. People with this type are often seen as independent, intelligent, and charismatic. They may seem "cold" at first but possess an irresistible charm.</p>
                 <p><strong>Common traits:</strong> Sharp eyes, high cheekbones, charismatic presence.</p>
             </article>
 
-            <article class="info-card" style="background: #efecff;">
-                <h3>Why take the Animal Face Test?</h3>
+            <article class="info-card info-card--secondary">
+                <h3>✨ Why take the Animal Face Test?</h3>
                 <p>Beyond the fun, understanding your facial archetype can help with personal branding, choosing hairstyles that complement your features, or even selecting the right eyewear. Our AI provides a consistent, objective baseline for these comparisons.</p>
-                <a href="/how-it-works.html" style="color: #6C5CE7; font-weight: bold; text-decoration: none;">Learn more about the science behind it &rarr;</a>
+                <a href="/how-it-works.html" class="info-link">Learn more about the science behind it &rarr;</a>
             </article>
         </section>
 
         <hr class="separator">
 
         <section id="faq-section" class="info-section">
-            <h2 style="color: #6C5CE7;">Frequently Asked Questions (FAQ)</h2>
-            <div class="faq-container" style="display: grid; gap: 1.5rem;">
-                <div class="faq-item" style="padding: 1.5rem; background: rgba(108, 92, 231, 0.05); border-radius: 12px; border-left: 5px solid #6C5CE7;">
-                    <h3 style="font-size: 1.2rem; margin-top: 0; color: #6C5CE7;">Q: What is the difference between a Dog Face and a Cat Face?</h3>
-                    <p style="font-size: 1rem; margin-bottom: 0; line-height: 1.5;">A: A **Dog Face** is generally characterized by rounder features and a friendly, approachable look. A **Cat Face** has sharper, more defined lines and a sophisticated, chic aura. Our AI model analyzes these visual archetypes.</p>
+            <h2 class="faq-heading">Frequently Asked Questions (FAQ)</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <h3>Q: What is the difference between a Dog Face and a Cat Face?</h3>
+                    <p>A: A Dog Face is generally characterized by rounder features and a friendly, approachable look. A Cat Face has sharper, more defined lines and a sophisticated, chic aura. Our AI model analyzes these visual archetypes.</p>
                 </div>
-                <div class="faq-item" style="padding: 1.5rem; background: rgba(108, 92, 231, 0.05); border-radius: 12px; border-left: 5px solid #6C5CE7;">
-                    <h3 style="font-size: 1.2rem; margin-top: 0; color: #6C5CE7;">Q: Is this AI animal face test private and secure?</h3>
-                    <p style="font-size: 1rem; margin-bottom: 0; line-height: 1.5;">A: Absolutely. All image analysis is performed locally in your browser using TensorFlow.js. Your photos are never uploaded to any server or stored anywhere.</p>
+                <div class="faq-item">
+                    <h3>Q: Is this AI animal face test private and secure?</h3>
+                    <p>A: Absolutely. All image analysis is performed locally in your browser using TensorFlow.js. Your photos are never uploaded to any server or stored anywhere.</p>
                 </div>
             </div>
         </section>
@@ -211,10 +214,11 @@
     <footer class="main-footer">
         <p>&copy; 2026 AnimalFaceTest. All rights reserved.</p>
         <div class="footer-links">
-            <a href="/about.html">About Us</a> | 
-            <a href="/privacy-policy.html">Privacy Policy</a> | 
+            <a href="/about.html">About Us</a> |
+            <a href="/privacy-policy.html">Privacy Policy</a> |
             <a href="/terms-of-service.html">Terms of Service</a> |
-            <a href="/how-it-works.html">How it Works</a>
+            <a href="/how-it-works.html">How it Works</a> |
+            <a href="/blog.html">Blog</a>
         </div>
     </footer>
     <script src="main.js"></script>
