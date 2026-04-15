@@ -1,55 +1,129 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WK2NYNHP70"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-WK2NYNHP70');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 분석 원리 - 동물상 테스트</title>
+    <title>AI 분석 원리 - 동물상 테스트 | 얼굴 인식 과학</title>
+    <meta name="description" content="동물상 테스트 AI 분석 원리를 소개합니다. TensorFlow.js와 딥러닝이 얼굴 특징을 분석하여 동물상을 분류하는 방법을 알아보세요.">
+    <meta name="google-adsense-account" content="ca-pub-8469659589717489">
+    <link rel="canonical" href="https://animalfacetest.com/how-it-works-ko.html">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <style>
-        .content-page { max-width: 800px; margin: 4rem auto; padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        h1 { color: #6C5CE7; }
-        h2 { margin-top: 2rem; color: #2D3436; }
-        p { line-height: 1.6; color: #636E72; }
-        .tech-step { margin-bottom: 2rem; padding: 1.5rem; background: #f9f9ff; border-radius: 8px; border-left: 4px solid #6C5CE7; }
+        .hw-wrap { max-width: 820px; margin: 3rem auto 4rem; padding: 2.5rem; background: var(--surface); border-radius: 14px; box-shadow: 0 4px 20px var(--shadow); }
+        .hw-wrap h1 { color: var(--primary); margin-bottom: .5rem; }
+        .hw-wrap h2 { margin-top: 2.2rem; color: var(--text); border-bottom: 1px solid var(--border-color); padding-bottom: .4rem; }
+        .hw-wrap p, .hw-wrap li { line-height: 1.85; color: var(--text-muted); }
+        .hw-wrap ul { padding-left: 1.4rem; }
+        .hw-wrap li { margin-bottom: .4rem; }
+        .hw-wrap a { color: var(--primary); text-decoration: underline; }
+        .step-card { margin-bottom: 1.5rem; padding: 1.5rem; background: var(--surface-low); border-radius: 10px; border-left: 4px solid var(--primary); }
+        .step-card h3 { margin: 0 0 .6rem; color: var(--text); }
+        .step-card p { margin: 0; }
+        .privacy-note { background: #f0fdf4; border: 1px solid #86efac; border-radius: 10px; padding: 1.2rem 1.5rem; margin-top: 1.5rem; }
+        body.dark .privacy-note { background: #052e16; border-color: #166534; }
+        .privacy-note p { margin: 0; color: var(--text-muted); }
     </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8469659589717489" crossorigin="anonymous"></script>
 </head>
 <body>
     <header class="main-header">
-        <div class="logo"><a href="/index-ko.html" style="text-decoration: none; color: inherit;">🐾 동물상 테스트</a></div>
+        <div class="logo"><a href="/index-ko.html" style="text-decoration:none;color:inherit;">🐾 동물상 테스트</a></div>
         <nav>
             <ul class="nav-links">
-                <li><a href="/index-ko.html">홈</a></li>
+                <li><a href="/index-ko.html">테스트</a></li>
+                <li><a href="/how-it-works-ko.html">원리</a></li>
+                <li><a href="/blog.html">블로그</a></li>
+                <li><a href="/about-ko.html">소개</a></li>
+                <li class="lang-selector"><a href="/how-it-works.html">English</a></li>
             </ul>
         </nav>
+        <button id="theme-toggle" onclick="document.body.classList.toggle('dark'); this.textContent = document.body.classList.contains('dark') ? '라이트 모드' : '다크 모드';">다크 모드</button>
     </header>
 
     <main class="container">
-        <article class="content-page">
+        <article class="hw-wrap">
             <h1>동물상 분석의 과학적 원리</h1>
-            <p>단순히 사진을 보고 추측하는 것이 아닙니다. 저희 AI는 얼굴의 기하학적 구조를 분석하여 결과를 도출합니다.</p>
+            <p>동물상 테스트는 단순한 무작위 분류가 아닙니다. 최첨단 컴퓨터 비전과 딥러닝을 활용하여 얼굴의 기하학적 구조를 분석하고 6가지 동물상 유형 중 하나로 분류합니다. 정확히 어떻게 작동하는지 알아보겠습니다.</p>
 
-            <div class="tech-step">
-                <h3>1. 얼굴 랜드마크 감지</h3>
-                <p>눈, 코, 입, 턱선 등 얼굴에서 68개의 주요 지점을 감지합니다. 이 과정은 TensorFlow.js를 통해 사용자의 브라우저에서 실시간으로 이루어집니다.</p>
+            <h2>단계별 AI 작동 원리</h2>
+
+            <div class="step-card">
+                <h3>1단계 — 이미지 로딩</h3>
+                <p>사진을 업로드하면 JavaScript File API를 사용하여 브라우저 메모리에 직접 로드됩니다. 이미지는 처리를 위해 HTML5 Canvas 요소에 그려집니다. <strong>어떤 경우에도 이미지는 서버로 전송되지 않습니다.</strong></p>
             </div>
 
-            <div class="tech-step">
-                <h3>2. 특징 추출</h3>
-                <p>감지된 지점들 사이의 거리와 각도를 계산합니다. 예를 들어, 눈의 가로세로 비율, 턱의 각도, 이마의 너비 등을 수치화합니다.</p>
+            <div class="step-card">
+                <h3>2단계 — 전처리</h3>
+                <p>이미지는 신경망 모델의 입력 크기(224×224픽셀)로 조정되고 정규화됩니다. 이 전처리 과정은 원본 사진 크기에 관계없이 일관된 분석을 보장합니다.</p>
             </div>
 
-            <div class="tech-step">
-                <h3>3. 신경망 분류</h3>
-                <p>추출된 데이터는 수많은 동물상 모델링 데이터와 비교됩니다. 딥러닝 모델이 사용자의 얼굴 특징이 강아지, 고양이, 토끼 등 어떤 카테고리와 가장 높은 일치율을 보이는지 판단합니다.</p>
+            <div class="step-card">
+                <h3>3단계 — 신경망 추론</h3>
+                <p>브라우저에서 머신러닝 추론을 실행하는 JavaScript 구현체인 <strong>TensorFlow.js</strong>를 사용합니다. 모델은 <strong>Google Teachable Machine</strong>을 통해 훈련된 합성곱 신경망(CNN)입니다. 얼굴 이미지의 공간적 패턴을 분석하여 특징 벡터로 매핑합니다.</p>
             </div>
 
-            <h2>프라이버시가 중요한 이유</h2>
-            <p>이 모든 과정이 브라우저에서 처리되므로 귀중한 개인의 얼굴 사진이 서버로 전송될 필요가 없습니다. 이는 가장 안전한 AI 이용 방식입니다.</p>
+            <div class="step-card">
+                <h3>4단계 — 분류</h3>
+                <p>모델의 최종 레이어는 소프트맥스 활성화 함수를 사용하여 강아지상, 고양이상, 말상, 너구리상, 코알라상, 판다상 6가지 클래스에 대한 확률 점수를 출력합니다. 가장 높은 확률의 클래스가 주 결과로 표시됩니다.</p>
+            </div>
+
+            <div class="step-card">
+                <h3>5단계 — 결과 표시</h3>
+                <p>결과는 브라우저에 즉시 표시되며, 얼굴 유형의 특징과 성격 연상에 대한 설명이 함께 제공됩니다. 이 과정에서 어떤 데이터도 기기를 벗어나지 않습니다.</p>
+            </div>
+
+            <h2>AI가 분석하는 얼굴 특징</h2>
+            <p>CNN 모델은 다음을 포함한 특징들의 조합을 식별합니다:</p>
+            <ul>
+                <li><strong>눈 모양과 각도:</strong> 둥근형 vs. 아몬드형; 수평 vs. 올라간 눈꼬리</li>
+                <li><strong>턱선과 턱 형태:</strong> 부드럽고 둥근 윤곽 vs. 각지고 V라인 구조</li>
+                <li><strong>얼굴 비율:</strong> 얼굴 너비 대 길이 비율, 중안부 대 하안부 비율</li>
+                <li><strong>코 다리:</strong> 코 다리의 너비, 높이, 뚜렷함</li>
+                <li><strong>광대뼈 돌출도:</strong> 높고 뚜렷한 광대 vs. 부드럽고 낮은 위치</li>
+                <li><strong>이마 형태:</strong> 둥근/돔형 vs. 넓은/평평한 형태</li>
+            </ul>
+
+            <h2>정확도와 한계</h2>
+            <p>모델은 좋은 조명 조건과 정면 사진에서 잘 작동합니다. 다음 요소들이 정확도에 영향을 줍니다:</p>
+            <ul>
+                <li>사진 각도 (측면 사진은 덜 정확한 결과를 제공)</li>
+                <li>조명 품질 (강한 그림자는 얼굴 윤곽을 왜곡)</li>
+                <li>사진 해상도 (저화질 이미지는 정확도 저하)</li>
+                <li>수염, 안경, 액세서리 등으로 얼굴 특징이 가려지는 경우</li>
+            </ul>
+
+            <h2>기술 스택</h2>
+            <ul>
+                <li><strong>TensorFlow.js:</strong> 브라우저 기반 머신러닝 추론</li>
+                <li><strong>Google Teachable Machine:</strong> 모델 훈련 플랫폼</li>
+                <li><strong>HTML5 Canvas:</strong> 이미지 전처리</li>
+                <li><strong>JavaScript File API:</strong> 로컬 파일 처리 (업로드 없음)</li>
+            </ul>
+
+            <div class="privacy-note">
+                <p>🔒 <strong>프라이버시 보장:</strong> 전체 파이프라인이 브라우저에서 실행되므로 사진 데이터는 절대 기기를 벗어나지 않습니다. 서버 업로드, 얼굴 데이터 저장, 생체 인식 데이터 수집이 전혀 없습니다.</p>
+            </div>
         </article>
     </main>
 
     <footer class="main-footer">
         <p>&copy; 2026 동물상 테스트. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="/about-ko.html">소개</a> |
+            <a href="/privacy-policy-ko.html">개인정보처리방침</a> |
+            <a href="/terms-of-service-ko.html">이용약관</a> |
+            <a href="/how-it-works-ko.html">원리</a> |
+            <a href="/blog.html">블로그</a>
+        </div>
     </footer>
+    <script src="/cookie-consent.js"></script>
 </body>
 </html>
