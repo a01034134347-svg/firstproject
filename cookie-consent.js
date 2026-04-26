@@ -1,6 +1,6 @@
 /**
  * Cookie Consent Banner for AnimalFaceTest
- * Required for Google AdSense policy compliance and GDPR
+ * Required for Google AdSense policy compliance and GDPR / Consent Mode v2
  */
 (function () {
     var KEY = 'aft_consent';
@@ -25,7 +25,12 @@
         '#aft-cb-decline:hover{background:rgba(255,255,255,0.06);}',
         '#aft-cb-manage:hover{background:rgba(255,255,255,0.06);}',
         '@media(max-width:600px){#aft-cookie-banner{flex-direction:column;align-items:flex-start;}',
-        '.aft-cb-btns{width:100%;}}'
+        '.aft-cb-btns{width:100%;}}',
+        /* Cookie settings floating link */
+        '#aft-cookie-settings-link{position:fixed;bottom:12px;left:12px;z-index:99998;',
+        'background:rgba(30,30,30,0.75);color:#ccc;border:1px solid #444;',
+        'padding:5px 10px;border-radius:5px;font-size:11px;cursor:pointer;',
+        'font-family:sans-serif;text-decoration:none;line-height:1.4;display:none;}'
     ].join('');
     document.head.appendChild(css);
 
@@ -51,6 +56,7 @@
     function removeBanner() {
         var b = document.getElementById('aft-cookie-banner');
         if (b) b.parentNode.removeChild(b);
+        showSettingsLink();
     }
 
     function accept() {
@@ -65,17 +71,46 @@
         removeBanner();
     }
 
+    function showSettingsLink() {
+        var link = document.getElementById('aft-cookie-settings-link');
+        if (link) {
+            link.style.display = 'block';
+        } else {
+            var lang = document.documentElement.lang || 'en';
+            var isKo = lang === 'ko';
+            var el = document.createElement('button');
+            el.id = 'aft-cookie-settings-link';
+            el.textContent = isKo ? '🍪 쿠키 설정' : '🍪 Cookie Settings';
+            el.style.display = 'block';
+            el.addEventListener('click', function() {
+                try { localStorage.removeItem(KEY); } catch(e) {}
+                el.style.display = 'none';
+                showBanner();
+            });
+            document.body.appendChild(el);
+        }
+    }
+
     function showBanner() {
+        // Remove existing banner if any
+        var existing = document.getElementById('aft-cookie-banner');
+        if (existing) existing.parentNode.removeChild(existing);
+
+        // Hide settings link while banner is shown
+        var settingsLink = document.getElementById('aft-cookie-settings-link');
+        if (settingsLink) settingsLink.style.display = 'none';
+
         var lang = document.documentElement.lang || 'en';
         var isKo = lang === 'ko';
         var ppUrl = isKo ? '/privacy-policy-ko.html' : '/privacy-policy.html';
 
         var text = isKo
-            ? '본 사이트는 서비스 분석(Google Analytics, Microsoft Clarity) 및 맞춤형 광고(Google AdSense) 제공을 위해 쿠키를 사용합니다. "모두 수락"을 클릭하면 모든 쿠키 사용에 동의하게 됩니다. <a href="' + ppUrl + '">개인정보처리방침</a>'
-            : 'We use cookies for analytics (Google Analytics, Microsoft Clarity) and personalized advertising (Google AdSense). By clicking "Accept All" you consent to all cookies. <a href="' + ppUrl + '">Privacy Policy</a>';
+            ? '본 사이트는 서비스 분석(Google Analytics, Microsoft Clarity) 및 맞춤형 광고(Google AdSense) 제공을 위해 쿠키를 사용합니다. <a href="' + ppUrl + '">개인정보처리방침</a>'
+            : 'We use cookies for analytics (Google Analytics, Microsoft Clarity) and personalized advertising (Google AdSense). <a href="' + ppUrl + '">Privacy Policy</a>';
 
-        var acceptTxt = isKo ? '모두 수락' : 'Accept All';
+        var acceptTxt  = isKo ? '모두 수락' : 'Accept All';
         var declineTxt = isKo ? '거부' : 'Decline';
+        var manageTxt  = isKo ? '설정 변경' : 'Manage';
 
         var banner = document.createElement('div');
         banner.id = 'aft-cookie-banner';
@@ -83,6 +118,7 @@
         banner.setAttribute('aria-label', isKo ? '쿠키 동의' : 'Cookie Consent');
         banner.innerHTML = '<p>' + text + '</p>' +
             '<div class="aft-cb-btns">' +
+            '<button id="aft-cb-manage">' + manageTxt + '</button>' +
             '<button id="aft-cb-decline">' + declineTxt + '</button>' +
             '<button id="aft-cb-accept">' + acceptTxt + '</button>' +
             '</div>';
@@ -90,18 +126,16 @@
 
         document.getElementById('aft-cb-accept').addEventListener('click', accept);
         document.getElementById('aft-cb-decline').addEventListener('click', decline);
-    }
-
-    // Set gtag consent defaults BEFORE tags load (best effort)
-    if (typeof gtag === 'function' && !getConsent()) {
-        gtag('consent', 'default', {
-            analytics_storage: 'denied',
-            ad_storage: 'denied',
-            ad_user_data: 'denied',
-            ad_personalization: 'denied',
-            wait_for_update: 500
+        document.getElementById('aft-cb-manage').addEventListener('click', function() {
+            window.location.href = ppUrl + '#cookies';
         });
     }
+
+    // Expose reset function for footer "Cookie Settings" links
+    window.aftResetConsent = function() {
+        try { localStorage.removeItem(KEY); } catch(e) {}
+        showBanner();
+    };
 
     // On DOM ready
     function init() {
@@ -110,6 +144,7 @@
             showBanner();
         } else {
             updateGtag(consent === 'accepted');
+            showSettingsLink();
         }
     }
 

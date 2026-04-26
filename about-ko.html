@@ -5,6 +5,7 @@
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      (function(){var _c;try{_c=localStorage.getItem('aft_consent');}catch(e){}var _s=_c==='accepted'?'granted':'denied';gtag('consent','default',{analytics_storage:_s,ad_storage:_s,ad_user_data:_s,ad_personalization:_s,wait_for_update:_c?0:500});})();
       gtag('js', new Date());
       gtag('config', 'G-WK2NYNHP70');
     </script>
@@ -42,7 +43,8 @@
                 <li><a href="/index-ko.html">테스트</a></li>
                 <li><a href="/how-it-works-ko.html">원리</a></li>
                 <li><a href="/blog.html">블로그</a></li>
-                <li><a href="/about-ko.html">소개</a></li>
+                <li><a href="/about-ko.html">소개</a> | 
+            <a href="/contact.html">문의</a></li>
                 <li class="lang-selector"><a href="/about.html">English</a></li>
             </ul>
         </nav>
@@ -117,6 +119,8 @@
             <a href="/terms-of-service-ko.html">이용약관</a> |
             <a href="/how-it-works-ko.html">원리</a> |
             <a href="/blog.html">블로그</a>
+        
+            <a href="#" onclick="aftResetConsent();return false;">쿠키 설정</a>
         </div>
     </footer>
     <script src="/cookie-consent.js"></script>
